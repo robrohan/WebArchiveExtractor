@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'WebArchiveExtractor' target in the 'WebArchiveExtractor' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
