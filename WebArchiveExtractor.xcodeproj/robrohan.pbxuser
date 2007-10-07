@@ -10,17 +10,17 @@
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeExecutable = DA60BC340CA0B24D000393B9 /* WebArchiveExtractor */;
-		activeTarget = 8D1107260486CEB800E47090 /* WebArchiveExtractor */;
+		activeExecutable = DA60BC340CA0B24D000393B9 /* WebArchive Extractor */;
+		activeTarget = 8D1107260486CEB800E47090 /* WebArchive Extractor */;
 		addToTargets = (
-			8D1107260486CEB800E47090 /* WebArchiveExtractor */,
+			8D1107260486CEB800E47090 /* WebArchive Extractor */,
 		);
 		breakpoints = (
 		);
 		breakpointsGroup = DA3908F20CB8CCB600B9FAB0 /* XCBreakpointsBucket */;
 		codeSenseManager = DA60BC420CA0B26C000393B9 /* Code sense */;
 		executables = (
-			DA60BC340CA0B24D000393B9 /* WebArchiveExtractor */,
+			DA60BC340CA0B24D000393B9 /* WebArchive Extractor */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
@@ -178,6 +178,12 @@
 			DA390B230CB93D5400B9FAB0 /* PBXTextBookmark */ = DA390B230CB93D5400B9FAB0 /* PBXTextBookmark */;
 			DA390B260CB93D5800B9FAB0 /* PBXTextBookmark */ = DA390B260CB93D5800B9FAB0 /* PBXTextBookmark */;
 			DA390B290CB93D5800B9FAB0 /* PBXTextBookmark */ = DA390B290CB93D5800B9FAB0 /* PBXTextBookmark */;
+			DA390B3F0CB9498000B9FAB0 /* PBXTextBookmark */ = DA390B3F0CB9498000B9FAB0 /* PBXTextBookmark */;
+			DA390B400CB9498000B9FAB0 /* PBXTextBookmark */ = DA390B400CB9498000B9FAB0 /* PBXTextBookmark */;
+			DA390B420CB949C000B9FAB0 /* PBXTextBookmark */ = DA390B420CB949C000B9FAB0 /* PBXTextBookmark */;
+			DA390B430CB949C000B9FAB0 /* PBXTextBookmark */ = DA390B430CB949C000B9FAB0 /* PBXTextBookmark */;
+			DA390B460CB94A1200B9FAB0 /* PBXTextBookmark */ = DA390B460CB94A1200B9FAB0 /* PBXTextBookmark */;
+			DA390B470CB94A1200B9FAB0 /* PBXTextBookmark */ = DA390B470CB94A1200B9FAB0 /* PBXTextBookmark */;
 			DACE523B0CB8A51E000BFEAC = DACE523B0CB8A51E000BFEAC /* PBXBookmark */;
 			DACE52460CB8A67B000BFEAC = DACE52460CB8A67B000BFEAC /* PBXTextBookmark */;
 			DACE52620CB8A84F000BFEAC = DACE52620CB8A84F000BFEAC /* PBXTextBookmark */;
@@ -195,16 +201,16 @@
 			sepNavWindowFrame = "{{15, 225}, {983, 798}}";
 		};
 	};
-	8D1107260486CEB800E47090 /* WebArchiveExtractor */ = {
+	8D1107260486CEB800E47090 /* WebArchive Extractor */ = {
 		activeExec = 0;
 		executables = (
-			DA60BC340CA0B24D000393B9 /* WebArchiveExtractor */,
+			DA60BC340CA0B24D000393B9 /* WebArchive Extractor */,
 		);
 	};
 	8D1107310486CEB800E47090 /* Info.plist */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {731, 627}}";
-			sepNavSelRange = "{937, 8}";
+			sepNavSelRange = "{340, 0}";
 			sepNavVisRect = "{{0, 0}, {731, 627}}";
 			sepNavWindowFrame = "{{243, 178}, {770, 685}}";
 		};
@@ -961,7 +967,7 @@
 		rLen = 0;
 		rLoc = 161;
 		rType = 0;
-		vrLen = 747;
+		vrLen = 678;
 		vrLoc = 0;
 	};
 	DA3909280CB93A6A00B9FAB0 /* PBXTextBookmark */ = {
@@ -1054,7 +1060,67 @@
 		vrLen = 833;
 		vrLoc = 6374;
 	};
-	DA60BC340CA0B24D000393B9 /* WebArchiveExtractor */ = {
+	DA390B3F0CB9498000B9FAB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */;
+		name = "ArchiveDropView.m: setImage:";
+		rLen = 0;
+		rLoc = 1523;
+		rType = 0;
+		vrLen = 1005;
+		vrLoc = 707;
+	};
+	DA390B400CB9498000B9FAB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA60BC470CA0B2AC000393B9 /* Extractor.m */;
+		name = "Extractor.m: 295";
+		rLen = 0;
+		rLoc = 7207;
+		rType = 0;
+		vrLen = 833;
+		vrLoc = 6374;
+	};
+	DA390B420CB949C000B9FAB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */;
+		name = "ArchiveDropView.m: setImage:";
+		rLen = 0;
+		rLoc = 1523;
+		rType = 0;
+		vrLen = 1005;
+		vrLoc = 707;
+	};
+	DA390B430CB949C000B9FAB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA60BC470CA0B2AC000393B9 /* Extractor.m */;
+		name = "Extractor.m: 295";
+		rLen = 0;
+		rLoc = 7207;
+		rType = 0;
+		vrLen = 833;
+		vrLoc = 6374;
+	};
+	DA390B460CB94A1200B9FAB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */;
+		name = "ArchiveDropView.m: setImage:";
+		rLen = 0;
+		rLoc = 1523;
+		rType = 0;
+		vrLen = 1005;
+		vrLoc = 707;
+	};
+	DA390B470CB94A1200B9FAB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA60BC470CA0B2AC000393B9 /* Extractor.m */;
+		name = "Extractor.m: 295";
+		rLen = 0;
+		rLoc = 7207;
+		rType = 0;
+		vrLen = 833;
+		vrLoc = 6374;
+	};
+	DA60BC340CA0B24D000393B9 /* WebArchive Extractor */ = {
 		isa = PBXExecutable;
 		activeArgIndex = 2147483647;
 		activeArgIndices = (
@@ -1074,7 +1140,7 @@
 		executableSystemSymbolLevel = 0;
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
-		name = WebArchiveExtractor;
+		name = "WebArchive Extractor";
 		savedGlobals = {
 		};
 		sourceDirectories = (

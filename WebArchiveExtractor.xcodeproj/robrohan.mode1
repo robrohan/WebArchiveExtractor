@@ -204,7 +204,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>DA390B260CB93D5800B9FAB0</string>
+						<string>DA390B460CB94A1200B9FAB0</string>
 						<key>history</key>
 						<array>
 							<string>DA390B190CB93D2400B9FAB0</string>
@@ -244,7 +244,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>DA390B290CB93D5800B9FAB0</string>
+						<string>DA390B470CB94A1200B9FAB0</string>
 						<key>history</key>
 						<array>
 							<string>DA390B0F0CB93B8E00B9FAB0</string>
@@ -338,19 +338,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>080E96DDFE201D6D7F000001</string>
-								<string>DA60BEF70CA0C02B000393B9</string>
-								<string>DA60BC400CA0B26C000393B9</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1CC0EA4004350EF90041110B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
-									<integer>2</integer>
-									<integer>1</integer>
-									<integer>0</integer>
+									<integer>7</integer>
+									<integer>6</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -597,10 +592,10 @@
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>DA3907B70CB8A86700B9FAB0</string>
 		<string>DA6A0B880CB86F7000FDC439</string>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>DA390B270CB93D5800B9FAB0</string>
-		<string>/Users/robrohan/Projects/WebArchiveExtractor/WebArchiveExtractor.xcodeproj</string>
 		<string>DA390B240CB93D5800B9FAB0</string>
+		<string>1C0AD2B3069F1EA900FABCE6</string>
+		<string>/Users/robrohan/Projects/WebArchiveExtractor/WebArchiveExtractor.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>6 287 348 738 0 0 1680 1028 </string>
