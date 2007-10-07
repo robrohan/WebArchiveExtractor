@@ -88,6 +88,13 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	[logOutput insertText:@""];
     NSPasteboard *pboard = [sender draggingPasteboard];
 	
+	NSString * indexFileName = [[userDefaults values] valueForKey:@"WAEIndexName"];
+	if (indexFileName == nil || [indexFileName length] == 0) {
+		indexFileName = @"index.html";
+	}
+	
+	NSLog(@"%@", indexFileName);
+	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         int numberOfFiles = [files count];
@@ -97,14 +104,17 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		{
 			NSString* fileName = [files objectAtIndex:i];
 			[self logInfo:[NSString stringWithFormat:@"Processing %@...", fileName] ];
+			
 			if ([fileName hasSuffix:@"webarchive"])
 			{
 				NSFileManager * fm = [NSFileManager defaultManager];
 				NSString * dirPath = [fileName stringByDeletingLastPathComponent];
+				
 				if ([fm isWritableFileAtPath:dirPath])
 				{
 					NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
 					NSString * outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
+					
 					int i = 0;
 					while([fm fileExistsAtPath:outputPath])
 					{
@@ -115,7 +125,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					
 					Extractor * extr = [[[Extractor alloc] autorelease ] init];
 					[extr loadWebArchive: fileName];
-					NSString * mainResourcePath = [extr extractResources: outputPath];
+					NSString * mainResourcePath = [extr extractResources: outputPath indexName: indexFileName ];
 					
 					[self logResult:[NSString stringWithFormat: @"\tExtracted into %@.\n\tMain resource: %@",outputPath ,mainResourcePath]];
 					

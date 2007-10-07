@@ -12,9 +12,9 @@
 
 #import "Extractor.h"
 
-static NSString* composeEntryPointPath(NSString* packagePath)
+static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexName)
 {
-	return [packagePath stringByAppendingPathComponent:@"webarchive-index.html"];
+	return [packagePath stringByAppendingPathComponent:indexName];
 }
 
 @implementation Extractor
@@ -77,7 +77,7 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 	}
 }
 
-- (NSString*) extractResources:(NSString*) path
+- (NSString *) extractResources:(NSString *) path indexName: (NSString *) indexName
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	BOOL isDirectory = YES; 
@@ -101,14 +101,14 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 	id value;
 	while ((value = [enumerator nextObject])) {
 		WebResource * resource = (WebResource*) value;
-		[self extractResource: resource packagePath:path];
+		[self extractResource: resource packagePath:path indexName:indexName];
 	}
 	
-	return composeEntryPointPath(path);
+	return composeEntryPointPath(path, indexName);
 }
 
 
--(void) extractResource:(WebResource *) resource packagePath: (NSString*) path
+-(void) extractResource:(WebResource *) resource packagePath: (NSString*) path indexName: (NSString *) indexName
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	
@@ -135,7 +135,7 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 			if (i+1 == [components count])
 			{
 				//last path component - write file
-				[self outputResource:resource filePath:filePath packagePath:path];
+				[self outputResource:resource filePath:filePath packagePath:path indexName:indexName];
 			}			
 			else
 			{
@@ -154,10 +154,9 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 		
 	}
 	//NSLog(@"filePath=%@\n", filePath);
-	
 }
 
--(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath:(NSString*) packagePath
+-(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath indexName: (NSString *) indexName
 {
 	if (resource == m_mainResource)
 	{
@@ -213,7 +212,7 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 				}
 			}
 			
-			NSString * filePathXHtml = composeEntryPointPath(packagePath);
+			NSString * filePathXHtml = composeEntryPointPath(packagePath, indexName);
 			
 			[doc setCharacterEncoding:@"UTF-8"];
 			if (![[doc XMLDataWithOptions:NSXMLDocumentXHTMLKind] writeToFile:filePathXHtml atomically:NO])

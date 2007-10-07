@@ -22,7 +22,6 @@
 		DA60BF2F0CA0C6B1000393B9 /* CHANGES.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */; };
 		DA60BF300CA0C6B1000393B9 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF2E0CA0C6B1000393B9 /* README.rtf */; };
 		DA60BF4A0CA0C963000393B9 /* WebArchiveExtractor.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */; };
-		DA60BF520CA0CA10000393B9 /* LICENSE.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF510CA0CA10000393B9 /* LICENSE.rtf */; };
 		DA6A0B960CB87A7D00FDC439 /* MenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6A0B940CB87A7D00FDC439 /* MenuDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -61,11 +60,9 @@
 		DA60BCB40CA0BC82000393B9 /* ArchiveDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveDropView.h; sourceTree = "<group>"; };
 		DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveDropView.m; sourceTree = "<group>"; };
 		DA60BD060CA0BFD4000393B9 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		DA60BF010CA0C44A000393B9 /* folder_tar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_tar.png; sourceTree = "<group>"; };
 		DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = CHANGES.rtf; sourceTree = "<group>"; };
 		DA60BF2E0CA0C6B1000393B9 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 		DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = WebArchiveExtractor.icns; sourceTree = "<group>"; };
-		DA60BF510CA0CA10000393B9 /* LICENSE.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = LICENSE.rtf; sourceTree = "<group>"; };
 		DA6A0B940CB87A7D00FDC439 /* MenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDelegate.m; sourceTree = "<group>"; };
 		DA6A0B950CB87A7D00FDC439 /* MenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,11 +145,9 @@
 				DA16F9150CB8965500B792B3 /* extract_archive.png */,
 				DA16F9160CB8965500B792B3 /* DropTargetGraphic.psd */,
 				DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */,
-				DA60BF510CA0CA10000393B9 /* LICENSE.rtf */,
 				DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */,
 				DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */,
 				DA60BF2E0CA0C6B1000393B9 /* README.rtf */,
-				DA60BF010CA0C44A000393B9 /* folder_tar.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -239,7 +234,6 @@
 				DA60BF2F0CA0C6B1000393B9 /* CHANGES.rtf in Resources */,
 				DA60BF300CA0C6B1000393B9 /* README.rtf in Resources */,
 				DA60BF4A0CA0C963000393B9 /* WebArchiveExtractor.icns in Resources */,
-				DA60BF520CA0CA10000393B9 /* LICENSE.rtf in Resources */,
 				DA3907CA0CB8AC2900B9FAB0 /* LICENSE.rtfd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

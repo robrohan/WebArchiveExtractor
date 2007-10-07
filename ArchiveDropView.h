@@ -13,6 +13,7 @@
 @interface ArchiveDropView : NSView
 {
     IBOutlet NSTextView *logOutput;
+	IBOutlet NSUserDefaultsController *userDefaults;
 	NSImage *_dropImage;
 }
 

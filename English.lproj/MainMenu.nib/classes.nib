@@ -3,7 +3,7 @@
         {
             CLASS = ArchiveDropView; 
             LANGUAGE = ObjC; 
-            OUTLETS = {logOutput = NSTextView; }; 
+            OUTLETS = {logOutput = NSTextView; userDefaults = NSUserDefaultsController; }; 
             SUPERCLASS = NSView; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
