@@ -185,88 +185,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>DA3908260CB8B8D100B9FAB0</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>Extractor.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>DA3908270CB8B8D100B9FAB0</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>Extractor.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>DA3908500CB8BB3D00B9FAB0</string>
-						<key>history</key>
-						<array>
-							<string>DA3908220CB8B89200B9FAB0</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {924, 737}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>279 178 924 778 0 0 1680 1028 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>DA3908440CB8BA0600B9FAB0</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>ArchiveDropView.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>DA3908450CB8BA0600B9FAB0</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>ArchiveDropView.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>DA3908510CB8BB3D00B9FAB0</string>
-						<key>history</key>
-						<array>
-							<string>DA3908350CB8B9B800B9FAB0</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {983, 757}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>439 230 983 798 0 0 1680 1028 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -600,8 +519,6 @@
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>DA3907B70CB8A86700B9FAB0</string>
 		<string>DA6A0B880CB86F7000FDC439</string>
-		<string>DA3908440CB8BA0600B9FAB0</string>
-		<string>DA3908260CB8B8D100B9FAB0</string>
 		<string>/Users/robrohan/Projects/WebArchiveExtractor/WebArchiveExtractor.xcodeproj</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
 	</array>
@@ -627,7 +544,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ArchiveDropView.m</string>
+								<string>Extractor.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

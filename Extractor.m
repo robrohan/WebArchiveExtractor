@@ -19,6 +19,18 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 @implementation Extractor
 
+- (void) setEntryFileName:(NSString *) filename;
+{
+    NSString *temp = [filename retain];
+    [entryFileName release];
+    entryFileName = temp;
+}
+
+- (NSString *) entryFileName;
+{
+    return entryFileName;
+}
+
 -(void) loadWebArchive:(NSString*) pathToWebArchive
 {
 	if (m_resources)
@@ -77,7 +89,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
-- (NSString *) extractResources:(NSString *) path indexName: (NSString *) indexName
+- (NSString *) extractResources:(NSString *) path 
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	BOOL isDirectory = YES; 
@@ -101,14 +113,14 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	id value;
 	while ((value = [enumerator nextObject])) {
 		WebResource * resource = (WebResource*) value;
-		[self extractResource: resource packagePath:path indexName:indexName];
+		[self extractResource: resource packagePath:path];
 	}
 	
-	return composeEntryPointPath(path, indexName);
+	return composeEntryPointPath(path, [self entryFileName]);
 }
 
 
--(void) extractResource:(WebResource *) resource packagePath: (NSString*) path indexName: (NSString *) indexName
+-(void) extractResource:(WebResource *) resource packagePath: (NSString*) path
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	
@@ -135,13 +147,13 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			if (i+1 == [components count])
 			{
 				//last path component - write file
-				[self outputResource:resource filePath:filePath packagePath:path indexName:indexName];
+				[self outputResource:resource filePath:filePath packagePath:path];
 			}			
 			else
 			{
 				//create directory
 				BOOL isDirectory = YES; 
-				if (![fm fileExistsAtPath:filePath isDirectory:  &isDirectory]
+				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory]
 					&&
 					[fm createDirectoryAtPath:filePath attributes:nil]!=YES)
 				{
@@ -153,10 +165,11 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		}
 		
 	}
-	//NSLog(@"filePath=%@\n", filePath);
 }
 
--(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath indexName: (NSString *) indexName
+-(void) outputResource: (WebResource *) resource 
+			  filePath: (NSString*) filePath 
+		   packagePath: (NSString*) packagePath
 {
 	if (resource == m_mainResource)
 	{
@@ -212,7 +225,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 				}
 			}
 			
-			NSString * filePathXHtml = composeEntryPointPath(packagePath, indexName);
+			NSString * filePathXHtml = composeEntryPointPath(packagePath, [self entryFileName]);
 			
 			[doc setCharacterEncoding:@"UTF-8"];
 			if (![[doc XMLDataWithOptions:NSXMLDocumentXHTMLKind] writeToFile:filePathXHtml atomically:NO])

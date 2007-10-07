@@ -93,8 +93,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		indexFileName = @"index.html";
 	}
 	
-	NSLog(@"%@", indexFileName);
-	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         int numberOfFiles = [files count];
@@ -125,7 +123,8 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					
 					Extractor * extr = [[[Extractor alloc] autorelease ] init];
 					[extr loadWebArchive: fileName];
-					NSString * mainResourcePath = [extr extractResources: outputPath indexName: indexFileName ];
+					[extr setEntryFileName: indexFileName];
+					NSString * mainResourcePath = [extr extractResources: outputPath];
 					
 					[self logResult:[NSString stringWithFormat: @"\tExtracted into %@.\n\tMain resource: %@",outputPath ,mainResourcePath]];
 					
