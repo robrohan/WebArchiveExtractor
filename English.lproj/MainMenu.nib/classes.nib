@@ -8,6 +8,19 @@
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
+            ACTIONS = {toggleLogWindow = id; }; 
+            CLASS = MenuDelegate; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {logMenuItem = NSMenuItem; logWindow = NSPanel; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {checkForUpdates = id; }; 
+            CLASS = SUUpdater; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
             CLASS = WebArchiveController; 
             LANGUAGE = ObjC; 
             OUTLETS = {mainWindow = NSWindow; }; 

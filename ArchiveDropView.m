@@ -32,7 +32,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		[self registerForDraggedTypes:[NSArray arrayWithObjects: NSFilenamesPboardType, nil]];
 		
 		//set the drop target image
-		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource:@"folder_tar.png"]];
+		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource:@"extract_archive.png"]];
 		[self setImage:newImage];
 		[newImage release];
 	}
