@@ -52,7 +52,7 @@
  * write resource data to filePath
  * Parent directory of filePath should exists
  */
--(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath indexName: (NSString *) indexName;
+-(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath;
 
 - (void) setEntryFileName:(NSString *) filename;
 

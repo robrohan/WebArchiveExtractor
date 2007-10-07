@@ -117,8 +117,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					int i = 0;
 					while([fm fileExistsAtPath:outputPath])
 					{
-						
-						
 						[self logWarning:[NSString stringWithFormat: NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath] ];
 						NSString * dirName = [archiveName stringByAppendingString:@"-%i"]; 
 						outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];

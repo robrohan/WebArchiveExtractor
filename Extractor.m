@@ -135,7 +135,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 }
 
 
--(void) extractResource:(WebResource *) resource packagePath: (NSString*) path
+- (void) extractResource:(WebResource *) resource packagePath: (NSString*) path
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	
@@ -150,6 +150,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	[filePath appendString:path];
 	
 	NSArray * components = [urlPath componentsSeparatedByString:@"/"];
+	
 	int i;
 	for (i=0; i<[components count]; i++)
 	{
@@ -168,9 +169,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			{
 				//create directory
 				BOOL isDirectory = YES; 
-				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory]
-					&&
-					[fm createDirectoryAtPath:filePath attributes:nil]!=YES)
+				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath attributes:nil]!=YES)
 				{
 					NSLog(
 						  NSLocalizedStringFromTable(
@@ -189,19 +188,13 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
--(void) outputResource: (WebResource *) resource 
-			  filePath: (NSString*) filePath 
-		   packagePath: (NSString*) packagePath
+- (void) outputResource: (WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath
 {
-	if (resource == m_mainResource)
-	{
+	if (resource == m_mainResource) {
 		NSStringEncoding encoding;
-		if ([@"UTF-8" isEqualToString: [m_mainResource textEncodingName]])
-		{
+		if ([@"UTF-8" isEqualToString: [m_mainResource textEncodingName]]) {
 			encoding = NSUTF8StringEncoding;
-		}
-		else
-		{
+		} else {
 			encoding = NSISOLatin1StringEncoding;
 		}
 
@@ -215,16 +208,15 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		
 		NSError * err = nil;
 		NSXMLDocument * doc = [NSXMLDocument alloc];
-		doc = [doc initWithXMLString:source options:NSXMLDocumentTidyHTML error:&err];
+		doc = [doc initWithXMLString: source options: NSXMLDocumentTidyHTML error: &err];
 		
-		if (doc != nil)
-		{
+		if (doc != nil)	{
 			[doc autorelease];
 			//process images
-			err=nil;
-			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" error:&err];
-			if (err!=nil)
-			{
+			err = nil;
+			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" 
+										   error: &err];
+			if (err != nil) {
 				NSLog(
 					  NSLocalizedStringFromTable(
 												 @"cannot execute xpath", 
@@ -232,25 +224,22 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 												 @"Xpath execute error"
 												 )
 					  );
-			}
-			else
-			{
+			} else {
 				int i;
-				for (i=0; i<[images count]; i++)
-				{
+				for (i=0; i<[images count]; i++) {
+					
 					NSXMLElement * link = (NSXMLElement*) [images objectAtIndex: i];
 					NSXMLNode* href = [link attributeForName: @"href"];
-					if (href == nil)
-					{
+					
+					if (href == nil) {
 						href = [link attributeForName: @"src"];
 					}
 					
-					if (href != nil)
-					{
+					if (href != nil) {
 						NSString * hrefValue = [href objectValue];
 						WebResource * res = [m_resourceLookupTable objectForKey:hrefValue];
-						if (res != nil)
-						{
+						
+						if (res != nil) {
 							[href setObjectValue:[[[res URL] path] substringFromIndex:1] ];
 						}
 					}
@@ -259,9 +248,9 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			
 			NSString * filePathXHtml = composeEntryPointPath(packagePath, [self entryFileName]);
 			
-			[doc setCharacterEncoding:@"UTF-8"];
-			if (![[doc XMLDataWithOptions:NSXMLDocumentXHTMLKind] writeToFile:filePathXHtml atomically:NO])
-			{
+			[doc setCharacterEncoding: @"UTF-8"];
+			
+			if (![[doc XMLDataWithOptions: NSXMLDocumentXHTMLKind] writeToFile: filePathXHtml atomically: NO]) {
 				NSLog(
 					  NSLocalizedStringFromTable(
 												 @"cannot write xhtml", 
@@ -271,9 +260,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 					  filePath
 					  );
 			}
-		}
-		else
-		{
+		} else {
 			NSLog(
 				  NSLocalizedStringFromTable(
 											 @"error code", 
@@ -283,11 +270,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 				  [[err userInfo] valueForKey:NSLocalizedDescriptionKey]
 				  );
 		}
-	}
-	else
-	{
-		if (![[resource data] writeToFile:filePath atomically:NO])
-		{
+	} else {
+		if (![[resource data] writeToFile:filePath atomically:NO]) {
 			NSLog(
 				NSLocalizedStringFromTable(
 										   @"cannot write xhtml", 
@@ -308,4 +292,3 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 }
 
 @end
-

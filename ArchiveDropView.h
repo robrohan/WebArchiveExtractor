@@ -17,9 +17,12 @@
 	NSImage *_dropImage;
 }
 
-- (void)logError:(NSString*) message;
-- (void)logWarning:(NSString*) message;
-- (void)logInfo:(NSString*) message;
-- (void)logResult:(NSString*) message;
+- (void)logError: (NSString*) message;
+- (void)logWarning: (NSString*) message;
+- (void)logInfo: (NSString*) message;
+- (void)logResult: (NSString*) message;
+
+- (void)setImage: (NSImage *)newImage;
+- (NSImage *)image;
 
 @end
