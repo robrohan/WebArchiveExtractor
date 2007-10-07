@@ -14,6 +14,7 @@
 		DA16F9170CB8965500B792B3 /* extract_archive.png in Resources */ = {isa = PBXBuildFile; fileRef = DA16F9150CB8965500B792B3 /* extract_archive.png */; };
 		DA16F9420CB89B5200B792B3 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA16F92E0CB89B5200B792B3 /* Sparkle.framework */; };
 		DA16F9470CB89BAC00B792B3 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA16F92E0CB89B5200B792B3 /* Sparkle.framework */; };
+		DA3907CA0CB8AC2900B9FAB0 /* LICENSE.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */; };
 		DA60BC480CA0B2AC000393B9 /* Extractor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA60BC470CA0B2AC000393B9 /* Extractor.m */; };
 		DA60BC510CA0B4A5000393B9 /* WebArchiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA60BC500CA0B4A5000393B9 /* WebArchiveController.m */; };
 		DA60BCB60CA0BC82000393B9 /* ArchiveDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */; };
@@ -52,6 +53,7 @@
 		DA16F9150CB8965500B792B3 /* extract_archive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = extract_archive.png; sourceTree = "<group>"; };
 		DA16F9160CB8965500B792B3 /* DropTargetGraphic.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = DropTargetGraphic.psd; sourceTree = "<group>"; };
 		DA16F92E0CB89B5200B792B3 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = LICENSE.rtfd; sourceTree = "<group>"; };
 		DA60BC460CA0B2AC000393B9 /* Extractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extractor.h; sourceTree = "<group>"; };
 		DA60BC470CA0B2AC000393B9 /* Extractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extractor.m; sourceTree = "<group>"; };
 		DA60BC4F0CA0B4A5000393B9 /* WebArchiveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebArchiveController.h; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				DA16F9160CB8965500B792B3 /* DropTargetGraphic.psd */,
 				DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */,
 				DA60BF510CA0CA10000393B9 /* LICENSE.rtf */,
+				DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */,
 				DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */,
 				DA60BF2E0CA0C6B1000393B9 /* README.rtf */,
 				DA60BF010CA0C44A000393B9 /* folder_tar.png */,
@@ -237,6 +240,7 @@
 				DA60BF300CA0C6B1000393B9 /* README.rtf in Resources */,
 				DA60BF4A0CA0C963000393B9 /* WebArchiveExtractor.icns in Resources */,
 				DA60BF520CA0CA10000393B9 /* LICENSE.rtf in Resources */,
+				DA3907CA0CB8AC2900B9FAB0 /* LICENSE.rtfd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

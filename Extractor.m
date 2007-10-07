@@ -75,11 +75,9 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 	{
 		//todo
 	}
-	
-	
 }
 
--(NSString*) extractResources:(NSString*) path
+- (NSString*) extractResources:(NSString*) path
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	BOOL isDirectory = YES; 
@@ -107,7 +105,6 @@ static NSString* composeEntryPointPath(NSString* packagePath)
 	}
 	
 	return composeEntryPointPath(path);
-	
 }
 
 

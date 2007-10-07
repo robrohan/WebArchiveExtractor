@@ -16,44 +16,46 @@
 @interface Extractor : NSObject 
 {
 	WebResource *  m_mainResource;
-	
 	NSMutableSet * m_resources;
 	
-	//in m_resourceLookupTable HTML resource can be stored with relative or absolute path
-	//m_resourceLookupTable contains several keys for each resource (as least 2: absolute and relative paths)
+	//in m_resourceLookupTable HTML resource can be stored with relative or 
+	//absolute path m_resourceLookupTable contains several keys for each resource 
+	// (as least 2: absolute and relative paths)
 	NSMutableDictionary * m_resourceLookupTable;
+	NSString * entryFileName;
 }
 
+/**
+ * load web archive file
+ */
+- (void) loadWebArchive:(NSString*) pathToWebArchive;
 
 /**
-*load web archive file
+ * add resource to resource table
  */
--(void) loadWebArchive:(NSString*) pathToWebArchive;
+- (void) addResource:(WebResource *) resource;
 
-	/**
-	*add resource to resource table
-	 */
-- (void) addResource:(WebResource *)resource;
+/**
+ * extract to directory
+ */
+- (NSString*) extractResources:(NSString*) path;
 
-	/**
-	*extract to directory
-	 */
--(NSString*) extractResources:(NSString*) path;
+/**
+ * private method
+ * extract resource to existing packagePath (using outputResource)
+ * (packagePath the same as path of extractResources message)
+ */
+- (void) extractResource:(WebResource *) resource packagePath: (NSString*) path;
 
+/**
+ * protected method
+ * write resource data to filePath
+ * Parent directory of filePath should exists
+ */
+- (void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath;
 
-	/**
-	*private method
-	 *extract resource to existing packagePath (using outputResource)
-	 *(packagePath the same as path of extractResources message)
-	 */
--(void) extractResource:(WebResource *) resource packagePath: (NSString*) path;
+- (void) setEntryFileName:(NSString *) filename;
 
-
-	/**
-	*protected method
-	 *write resource data to filePath
-	 *Parent directory of filePath should exists
-	 */
--(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath:(NSString*) packagePath;
+- (NSString *) entryFileName;
 
 @end
