@@ -32,7 +32,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		[self registerForDraggedTypes:[NSArray arrayWithObjects: NSFilenamesPboardType, nil]];
 		
 		//set the drop target image
-		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource:@"extract_archive.png"]];
+		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource: @"extract_archive.png"]];
 		[self setImage:newImage];
 		[newImage release];
 	}
@@ -101,7 +101,8 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		for (i=0; i<numberOfFiles; i++)
 		{
 			NSString* fileName = [files objectAtIndex:i];
-			[self logInfo:[NSString stringWithFormat:@"Processing %@...", fileName] ];
+			
+			[self logInfo:[NSString stringWithFormat: NSLocalizedStringFromTable(@"processing", @"InfoPlist", @"processing file: 1 name"), fileName] ];
 			
 			if ([fileName hasSuffix:@"webarchive"])
 			{
@@ -116,7 +117,9 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					int i = 0;
 					while([fm fileExistsAtPath:outputPath])
 					{
-						[self logWarning:[NSString stringWithFormat:@"\tFolder %@ already exists", outputPath] ];
+						
+						
+						[self logWarning:[NSString stringWithFormat: NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath] ];
 						NSString * dirName = [archiveName stringByAppendingString:@"-%i"]; 
 						outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
 					}
@@ -126,13 +129,13 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					[extr setEntryFileName: indexFileName];
 					NSString * mainResourcePath = [extr extractResources: outputPath];
 					
-					[self logResult:[NSString stringWithFormat: @"\tExtracted into %@.\n\tMain resource: %@",outputPath ,mainResourcePath]];
+					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
 					
 				}
 			}
 			else
 			{
-				[self logError:@"\tNot Web Archive"];
+				[self logError: NSLocalizedStringFromTable(@"not archive", @"InfoPlist", @"")];
 			}
 		}
     }

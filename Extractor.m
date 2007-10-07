@@ -21,7 +21,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (void) setEntryFileName:(NSString *) filename;
 {
-    NSString *temp = [filename retain];
+    //NSString *temp = [filename retain];
+	NSString *temp = [filename copy];
     [entryFileName release];
     entryFileName = temp;
 }
@@ -98,14 +99,28 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	{
 		if ([fm removeFileAtPath:path handler:nil]==NO)
 		{
-			NSLog(@"Cannot delete %@\n", path);
+			NSLog(
+				  NSLocalizedStringFromTable(
+											 @"cannot delete", 
+											 @"InfoPlist", 
+											 @"cannot delete file - path first param"
+											 ),
+				  path
+				  );
 			return nil;
 		}
 	}
 	
 	if ([fm createDirectoryAtPath:path attributes:nil]!=YES) 
 	{
-		//NSLog(@"Cannot create %@\n", path);
+		NSLog(
+			  NSLocalizedStringFromTable(
+										 @"cannot create", 
+										 @"InfoPlist", 
+										 @"cannot create file - path first param"
+										 ),
+			  path
+			  );
 		return nil;
 	}
 	
@@ -157,7 +172,14 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 					&&
 					[fm createDirectoryAtPath:filePath attributes:nil]!=YES)
 				{
-					NSLog(@"Cannot create %@\n", filePath);
+					NSLog(
+						  NSLocalizedStringFromTable(
+													 @"cannot create", 
+													 @"InfoPlist", 
+													 @"cannot create file - path first param"
+													 ),
+						  filePath
+						  );
 					return;
 				}
 				
@@ -183,14 +205,18 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			encoding = NSISOLatin1StringEncoding;
 		}
 
-		NSString * source = [[[NSString alloc] autorelease] initWithData:[resource data] encoding: encoding];
-		NSLog(@"main resource encoding is %@\n", [resource textEncodingName]);
-		//stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+		NSString * source = [[[NSString alloc] autorelease] initWithData:[resource data] 
+																encoding: encoding];
+		
+		NSLog(
+			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"), 
+			  [resource textEncodingName]
+		);
 		
 		NSError * err = nil;
 		NSXMLDocument * doc = [NSXMLDocument alloc];
-		//doc = [doc initWithData:[resource data] options:NSXMLDocumentTidyHTML error:&err];		
 		doc = [doc initWithXMLString:source options:NSXMLDocumentTidyHTML error:&err];
+		
 		if (doc != nil)
 		{
 			[doc autorelease];
@@ -199,7 +225,13 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" error:&err];
 			if (err!=nil)
 			{
-				NSLog(@"Cannot execute xpath expression\n");
+				NSLog(
+					  NSLocalizedStringFromTable(
+												 @"cannot execute xpath", 
+												 @"InfoPlist", 
+												 @"Xpath execute error"
+												 )
+					  );
 			}
 			else
 			{
@@ -230,23 +262,43 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			[doc setCharacterEncoding:@"UTF-8"];
 			if (![[doc XMLDataWithOptions:NSXMLDocumentXHTMLKind] writeToFile:filePathXHtml atomically:NO])
 			{
-				NSLog(@"Cannot write XTHML file %@\n", filePath);
+				NSLog(
+					  NSLocalizedStringFromTable(
+												 @"cannot write xhtml", 
+												 @"InfoPlist", 
+												 @"xhtml file error"
+												 ),
+					  filePath
+					  );
 			}
 		}
 		else
 		{
-			NSLog(@"error code %@\n", [[err userInfo] valueForKey:NSLocalizedDescriptionKey]);
+			NSLog(
+				  NSLocalizedStringFromTable(
+											 @"error code", 
+											 @"InfoPlist", 
+											 @"extractor error. error code first param"
+											 ),
+				  [[err userInfo] valueForKey:NSLocalizedDescriptionKey]
+				  );
 		}
 	}
 	else
 	{
 		if (![[resource data] writeToFile:filePath atomically:NO])
 		{
-			//NSLog(@"Cannot write file %@\n", filePath);
+			NSLog(
+				NSLocalizedStringFromTable(
+										   @"cannot write xhtml", 
+										   @"InfoPlist", 
+										   @"xhtml file error"
+										   ),
+				filePath
+			);
 		}
 	}
 }
-
 
 - (void) dealloc {
 	[m_mainResource release];
@@ -254,8 +306,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	[m_resourceLookupTable release];
 	[super dealloc];
 }
-
-
 
 @end
 
