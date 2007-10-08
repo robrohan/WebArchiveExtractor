@@ -23,6 +23,10 @@
 		DA60BF300CA0C6B1000393B9 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF2E0CA0C6B1000393B9 /* README.rtf */; };
 		DA60BF4A0CA0C963000393B9 /* WebArchiveExtractor.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */; };
 		DA6A0B960CB87A7D00FDC439 /* MenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6A0B940CB87A7D00FDC439 /* MenuDelegate.m */; };
+		DAACE7FE0CBABE1900079E23 /* OutputType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAACE7FC0CBABE1900079E23 /* OutputType.h */; };
+		DAACE7FF0CBABE1900079E23 /* OutputType.m in Sources */ = {isa = PBXBuildFile; fileRef = DAACE7FD0CBABE1900079E23 /* OutputType.m */; };
+		DAACE8070CBABE5700079E23 /* OutputTypeController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAACE8050CBABE5700079E23 /* OutputTypeController.h */; };
+		DAACE8080CBABE5700079E23 /* OutputTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAACE8060CBABE5700079E23 /* OutputTypeController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +37,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DA16F9470CB89BAC00B792B3 /* Sparkle.framework in CopyFiles */,
+				DAACE7FE0CBABE1900079E23 /* OutputType.h in CopyFiles */,
+				DAACE8070CBABE5700079E23 /* OutputTypeController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +71,10 @@
 		DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = WebArchiveExtractor.icns; sourceTree = "<group>"; };
 		DA6A0B940CB87A7D00FDC439 /* MenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDelegate.m; sourceTree = "<group>"; };
 		DA6A0B950CB87A7D00FDC439 /* MenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDelegate.h; sourceTree = "<group>"; };
+		DAACE7FC0CBABE1900079E23 /* OutputType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputType.h; sourceTree = "<group>"; };
+		DAACE7FD0CBABE1900079E23 /* OutputType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputType.m; sourceTree = "<group>"; };
+		DAACE8050CBABE5700079E23 /* OutputTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputTypeController.h; sourceTree = "<group>"; };
+		DAACE8060CBABE5700079E23 /* OutputTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputTypeController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +177,7 @@
 		DA60BC400CA0B26C000393B9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				DAACE8020CBABE2100079E23 /* OutputType */,
 				DA60BC460CA0B2AC000393B9 /* Extractor.h */,
 				DA60BC470CA0B2AC000393B9 /* Extractor.m */,
 			);
@@ -176,6 +187,8 @@
 		DA60BEF70CA0C02B000393B9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DAACE8050CBABE5700079E23 /* OutputTypeController.h */,
+				DAACE8060CBABE5700079E23 /* OutputTypeController.m */,
 				DA60BC4F0CA0B4A5000393B9 /* WebArchiveController.h */,
 				DA60BC500CA0B4A5000393B9 /* WebArchiveController.m */,
 				DA60BCB40CA0BC82000393B9 /* ArchiveDropView.h */,
@@ -184,6 +197,15 @@
 				DA6A0B950CB87A7D00FDC439 /* MenuDelegate.h */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		DAACE8020CBABE2100079E23 /* OutputType */ = {
+			isa = PBXGroup;
+			children = (
+				DAACE7FC0CBABE1900079E23 /* OutputType.h */,
+				DAACE7FD0CBABE1900079E23 /* OutputType.m */,
+			);
+			name = OutputType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +272,8 @@
 				DA60BC510CA0B4A5000393B9 /* WebArchiveController.m in Sources */,
 				DA60BCB60CA0BC82000393B9 /* ArchiveDropView.m in Sources */,
 				DA6A0B960CB87A7D00FDC439 /* MenuDelegate.m in Sources */,
+				DAACE7FF0CBABE1900079E23 /* OutputType.m in Sources */,
+				DAACE8080CBABE5700079E23 /* OutputTypeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

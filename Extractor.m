@@ -19,17 +19,14 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 @implementation Extractor
 
-- (void) setEntryFileName:(NSString *) filename;
+- (id) init
 {
-    //NSString *temp = [filename retain];
-	NSString *temp = [filename copy];
-    [entryFileName release];
-    entryFileName = temp;
-}
-
-- (NSString *) entryFileName;
-{
-    return entryFileName;
+	[super init];
+	
+	//default to XHTML if there is nothing else
+	contentKind = NSXMLDocumentXHTMLKind;
+		
+	return self;
 }
 
 -(void) loadWebArchive:(NSString*) pathToWebArchive
@@ -188,7 +185,9 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
-- (void) outputResource: (WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath
+- (void) outputResource: (WebResource *) resource 
+			   filePath: (NSString*) filePath 
+			packagePath: (NSString*) packagePath
 {
 	if (resource == m_mainResource) {
 		NSStringEncoding encoding;
@@ -210,10 +209,23 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		NSXMLDocument * doc = [NSXMLDocument alloc];
 		doc = [doc initWithXMLString: source options: NSXMLDocumentTidyHTML error: &err];
 		
+		/*
+		 Returns the kind of document content for output.
+		- (NSXMLDocumentContentKind)documentContentKind
+		 
+		Discussion
+			Most of the differences among content kind have to do with the handling of content-less 
+			tags such as <br>. The valid NSXMLDocumentContentKind constants are 
+			NSXMLDocumentXMLKind, NSXMLDocumentXHTMLKind, NSXMLDocumentHTMLKind, 
+			and NSXMLDocumentTextKind.
+		*/
+		[doc setDocumentContentKind: contentKind];
+		
 		if (doc != nil)	{
 			[doc autorelease];
 			//process images
 			err = nil;
+			
 			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" 
 										   error: &err];
 			if (err != nil) {
@@ -228,8 +240,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 				int i;
 				for (i=0; i<[images count]; i++) {
 					
-					NSXMLElement * link = (NSXMLElement*) [images objectAtIndex: i];
-					NSXMLNode* href = [link attributeForName: @"href"];
+					NSXMLElement * link = (NSXMLElement *) [images objectAtIndex: i];
+					NSXMLNode * href = [link attributeForName: @"href"];
 					
 					if (href == nil) {
 						href = [link attributeForName: @"src"];
@@ -237,10 +249,17 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 					
 					if (href != nil) {
 						NSString * hrefValue = [href objectValue];
-						WebResource * res = [m_resourceLookupTable objectForKey:hrefValue];
+						WebResource * res = [m_resourceLookupTable objectForKey: hrefValue];
 						
 						if (res != nil) {
-							[href setObjectValue:[[[res URL] path] substringFromIndex:1] ];
+							//NSLog(@"%@", [[[res URL] path] substringFromIndex:1]);
+							
+							/* NSLog(@"%@",
+								  [NSString stringWithFormat:@"%@%@", [self URLPrepend], [[[res URL] path] substringFromIndex:1]]
+									  ); */
+							
+							//[href setObjectValue: [[[res URL] path] substringFromIndex:1] ];
+							[href setObjectValue: [NSString stringWithFormat:@"%@%@", [self URLPrepend], [[[res URL] path] substringFromIndex:1]]];
 						}
 					}
 				}
@@ -282,6 +301,40 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			);
 		}
 	}
+}
+
+- (void) setEntryFileName:(NSString *) filename;
+{
+	NSString *temp = [filename copy];
+    [entryFileName release];
+    entryFileName = temp;
+}
+
+- (NSString *) entryFileName;
+{
+    return entryFileName;
+}
+
+- (void) setURLPrepend:(NSString *) url
+{
+	NSString *temp = [url copy];
+    [URLPrepend release];
+    URLPrepend = temp;
+}
+
+- (NSString *) URLPrepend
+{
+	return URLPrepend;
+}
+
+- (void) setContentKind:(int) kind
+{
+	contentKind = kind;
+}
+
+- (int) contentKind
+{
+	return contentKind;
 }
 
 - (void) dealloc {

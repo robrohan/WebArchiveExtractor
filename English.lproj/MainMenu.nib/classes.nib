@@ -14,6 +14,8 @@
             OUTLETS = {logMenuItem = NSMenuItem; logWindow = NSPanel; }; 
             SUPERCLASS = NSObject; 
         }, 
+        {CLASS = OutputType; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = OutputTypeController; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {checkForUpdates = id; }; 
             CLASS = SUUpdater; 

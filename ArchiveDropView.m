@@ -9,6 +9,7 @@
 
 #import "ArchiveDropView.h"
 #import "Extractor.h"
+#import "OutputType.h"
 
 static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 {
@@ -88,15 +89,40 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	[logOutput insertText:@""];
     NSPasteboard *pboard = [sender draggingPasteboard];
 	
+	///////////////////////////////////
+	// This probably shouldn't be here
+	
+	//get the user defined index name
 	NSString * indexFileName = [[userDefaults values] valueForKey:@"WAEIndexName"];
 	if (indexFileName == nil || [indexFileName length] == 0) {
 		indexFileName = @"index.html";
 	}
 	
+	//get the user selected output type
+	//HACK alert. I need to figure out a better way to do this. I thought the User
+	//types from the select box would get an object, but it only returns a string :-/
+	NSString * outputType = [[userDefaults values] valueForKey:@"WAEOutputType"];
+	int type = NSXMLDocumentXHTMLKind;
+	if ( [outputType isEqualToString:@"HTML"] ) {
+		type = NSXMLDocumentHTMLKind;
+	} else if ( [outputType isEqualToString:@"XML"] ) {
+		type = NSXMLDocumentXMLKind;
+	} else if ( [outputType isEqualToString:@"XHTML"] ) {
+		type = NSXMLDocumentXHTMLKind;
+	} else if ( [outputType isEqualToString:@"Text"] ) {
+		type = NSXMLDocumentTextKind;
+	}
+	
+	NSString * URLPrepend = [[userDefaults values] valueForKey:@"WAEURLOffset"];
+	if (URLPrepend == nil || [URLPrepend length] == 0) {
+		URLPrepend = @"";
+	}
+	///////////////////////////////////
+	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         int numberOfFiles = [files count];
-		NSLog(@"%i\n", numberOfFiles);
+		//NSLog(@"%i\n", numberOfFiles);
 		int i;
 		for (i=0; i<numberOfFiles; i++)
 		{
@@ -125,6 +151,8 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					Extractor * extr = [[[Extractor alloc] autorelease ] init];
 					[extr loadWebArchive: fileName];
 					[extr setEntryFileName: indexFileName];
+					[extr setContentKind: type];
+					[extr setURLPrepend: URLPrepend];
 					NSString * mainResourcePath = [extr extractResources: outputPath];
 					
 					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];

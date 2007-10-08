@@ -22,7 +22,13 @@
 	//absolute path m_resourceLookupTable contains several keys for each resource 
 	// (as least 2: absolute and relative paths)
 	NSMutableDictionary * m_resourceLookupTable;
+	
+	/** the index file name */
 	NSString * entryFileName;
+	/** what kind of file to create (XML, XHTML, etc) */
+	int contentKind;
+	/** URL to add to the begining of the hrefs / srcs */
+	NSString * URLPrepend;
 }
 
 /**
@@ -55,7 +61,12 @@
 -(void) outputResource:(WebResource *) resource filePath: (NSString*) filePath packagePath: (NSString*) packagePath;
 
 - (void) setEntryFileName:(NSString *) filename;
-
 - (NSString *) entryFileName;
+
+- (void) setContentKind:(int) kind;
+- (int) contentKind;
+
+- (void) setURLPrepend:(NSString *) url;
+- (NSString *) URLPrepend;
 
 @end
