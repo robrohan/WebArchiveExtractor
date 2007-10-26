@@ -137,8 +137,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	NSFileManager * fm = [NSFileManager defaultManager];
 	
 	NSString * urlPath = [[resource URL] path];
-	if ([urlPath isEqual:@"/"])
-	{
+	if ([urlPath isEqual:@"/"]) {
 		//spec case - main resource name is equals site name
 		urlPath=@"/__index.html";
 	}
@@ -149,25 +148,20 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	NSArray * components = [urlPath componentsSeparatedByString:@"/"];
 	
 	int i;
-	for (i=0; i<[components count]; i++)
-	{
+	for (i=0; i<[components count]; i++) {
 		NSString * fname = (NSString*) [components objectAtIndex:i];
-		if ([fname length] > 0)
-		{
+		
+		if ([fname length] > 0)	{
 			[filePath appendString:@"/"];
 			[filePath appendString:fname];
 			
-			if (i+1 == [components count])
-			{
+			if (i+1 == [components count]) {
 				//last path component - write file
 				[self outputResource:resource filePath:filePath packagePath:path];
-			}			
-			else
-			{
+			} else {
 				//create directory
 				BOOL isDirectory = YES; 
-				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath attributes:nil]!=YES)
-				{
+				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath attributes:nil]!=YES) {
 					NSLog(
 						  NSLocalizedStringFromTable(
 													 @"cannot create", 
