@@ -9,6 +9,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = ppc;
 		activeBuildConfigurationName = Debug;
 		activeExecutable = DA60BC340CA0B24D000393B9 /* WebArchive Extractor */;
 		activeTarget = 8D1107260486CEB800E47090 /* WebArchive Extractor */;
@@ -17,7 +18,6 @@
 		);
 		breakpoints = (
 		);
-		breakpointsGroup = DA3908F20CB8CCB600B9FAB0 /* XCBreakpointsBucket */;
 		codeSenseManager = DA60BC420CA0B26C000393B9 /* Code sense */;
 		executables = (
 			DA60BC340CA0B24D000393B9 /* WebArchive Extractor */,
@@ -78,8 +78,8 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					200,
 					10,
+					60,
 					20,
 					48,
 					43,
@@ -95,14 +95,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 213668030;
-			PBXWorkspaceStateSaveDate = 213668030;
+			PBXPerProjectTemplateStateSaveDate = 218047283;
+			PBXWorkspaceStateSaveDate = 218047283;
 		};
 		perUserProjectItems = {
-			DA13F6A80CBC10F500F27EC2 /* PBXTextBookmark */ = DA13F6A80CBC10F500F27EC2 /* PBXTextBookmark */;
-			DA13F6A90CBC10F500F27EC2 /* PBXTextBookmark */ = DA13F6A90CBC10F500F27EC2 /* PBXTextBookmark */;
-			DAA920F70CBE8697002B549C /* PBXTextBookmark */ = DAA920F70CBE8697002B549C /* PBXTextBookmark */;
-			DAA920F80CBE8697002B549C /* PBXTextBookmark */ = DAA920F80CBE8697002B549C /* PBXTextBookmark */;
+			DAA4C5CF0CFF2B0C005313E2 /* PBXBookmark */ = DAA4C5CF0CFF2B0C005313E2 /* PBXBookmark */;
+			DAA4C5D20D00E883005313E2 /* PBXTextBookmark */ = DAA4C5D20D00E883005313E2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = DA60BC410CA0B26C000393B9 /* Source Control */;
 		userBuildSettings = {
@@ -130,35 +128,8 @@
 			sepNavWindowFrame = "{{243, 178}, {770, 685}}";
 		};
 	};
-	DA13F6A80CBC10F500F27EC2 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */;
-		name = "ArchiveDropView.m: 155";
-		rLen = 0;
-		rLoc = 4859;
-		rType = 0;
-		vrLen = 1565;
-		vrLoc = 3813;
-	};
-	DA13F6A90CBC10F500F27EC2 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA60BC460CA0B2AC000393B9 /* Extractor.h */;
-		name = "Extractor.h: setURLPrepend:";
-		rLen = 67;
-		rLoc = 1727;
-		rType = 0;
-		vrLen = 903;
-		vrLoc = 898;
-	};
-	DA3908F20CB8CCB600B9FAB0 /* XCBreakpointsBucket */ = {
-		isa = XCBreakpointsBucket;
-		name = "Project Breakpoints";
-		objects = (
-		);
-	};
 	DA60BC340CA0B24D000393B9 /* WebArchive Extractor */ = {
 		isa = PBXExecutable;
-		activeArgIndex = 0;
 		activeArgIndices = (
 			YES,
 		);
@@ -166,6 +137,7 @@
 			"-NSBindingDebugLogLevel 1",
 		);
 		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -238,10 +210,12 @@
 	};
 	DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1109, 3990}}";
-			sepNavSelRange = "{4859, 0}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{369, 326}\";\n        },\n                {\n            r = \"{770, 412}\";\n        },\n                {\n            r = \"{1216, 179}\";\n        },\n                {\n            r = \"{1436, 89}\";\n        },\n                {\n            r = \"{1548, 24}\";\n        },\n                {\n            r = \"{1679, 54}\";\n        },\n                {\n            r = \"{1776, 57}\";\n        },\n                {\n            r = \"{1873, 55}\";\n        },\n                {\n            r = \"{1970, 59}\";\n        },\n                {\n            r = \"{2090, 3193}\";\n        },\n                {\n            r = \"{5350, 484}\";\n        },\n                {\n            r = \"{5890, 1}\";\n        },\n                {\n            r = \"{5946, 1}\";\n        },\n                {\n            r = \"{6011, 17}\";\n        },\n                {\n            r = \"{6090, 32}\";\n        }\n    );\n    r = \"{0, 6130}\";\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 1008}}";
+			sepNavSelRange = "{786, 0}";
+			sepNavVisRange = "{373, 789}";
 			sepNavVisRect = "{{0, 2543}, {1109, 801}}";
-			sepNavWindowFrame = "{{321, 100}, {1148, 859}}";
+			sepNavWindowFrame = "{{188, 16}, {975, 816}}";
 		};
 	};
 	DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */ = {
@@ -276,25 +250,19 @@
 			sepNavWindowFrame = "{{15, 130}, {787, 893}}";
 		};
 	};
-	DAA920F70CBE8697002B549C /* PBXTextBookmark */ = {
+	DAA4C5CF0CFF2B0C005313E2 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */;
+	};
+	DAA4C5D20D00E883005313E2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */;
-		name = "ArchiveDropView.m: 155";
+		name = "ArchiveDropView.m: 85";
 		rLen = 0;
-		rLoc = 4859;
+		rLoc = 2032;
 		rType = 0;
-		vrLen = 1565;
-		vrLoc = 3813;
-	};
-	DAA920F80CBE8697002B549C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA60BC460CA0B2AC000393B9 /* Extractor.h */;
-		name = "Extractor.h: setURLPrepend:";
-		rLen = 67;
-		rLoc = 1727;
-		rType = 0;
-		vrLen = 953;
-		vrLoc = 0;
+		vrLen = 5432;
+		vrLoc = 698;
 	};
 	DAACE7FC0CBABE1900079E23 /* OutputType.h */ = {
 		uiCtxt = {

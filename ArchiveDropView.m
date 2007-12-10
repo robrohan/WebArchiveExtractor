@@ -82,7 +82,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	logMessage(logOutput, [NSColor darkGrayColor], message);
 }
 
-
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
 	[logOutput selectAll:self];
@@ -188,9 +187,13 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     return NSDragOperationNone;
 }
 
-- (void)draggingExited:(id <NSDraggingInfo>)sender {}
+- (void)draggingExited:(id <NSDraggingInfo>)sender 
+{
+}
 
-- (void)draggingEnded:(id <NSDraggingInfo>)sender {}
+- (void)draggingEnded:(id <NSDraggingInfo>)sender 
+{
+}
 
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
 {
