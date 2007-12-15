@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="AppleTitle" content="WebArchive Extractor Help"></meta>
+<title>WebArchive Extractor</title><meta name="Generator" content="Cocoa HTML Writer"><meta name="CocoaVersion" content="949"><style type="text/css">    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 24.0px Helvetica}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 24.0px Helvetica; min-height: 29.0px}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica}
+    p.p6 {margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Helvetica}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Lucida Grande; min-height: 15.0px}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Lucida Grande}
+    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica; min-height: 22.0px}
+    p.p11 {margin: 0.0px 0.0px 0.0px 36.0px; text-indent: -36.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px Helvetica}
+    span.s2 {text-shadow: 0.0px 3.0px 4.0px #8d8d8d}
+    span.s3 {text-decoration: underline ; color: #0021e8}
+    span.s4 {font: 12.0px Lucida Grande}
+    span.s5 {font: 11.0px Helvetica}
+    span.Apple-tab-span {white-space:pre}
+    ul.ul1 {list-style-type: disc}
+  </style></head><body><p class="p1"><br></p><p class="p2"><span class="s1"><img src="Pasted Graphic 2.tiff" alt="Pasted Graphic 2.tiff"></span></p><p class="p3"><span class="s2">WebArchive Extractor</span></p><p class="p4"><br></p><p class="p5"><b>Introduction</b></p><p class="p1"><br></p><p class="p6">WebArchive Extractor is a utility that takes Apple's WebArchive file format, and turns the file into a normal directory structure. This utility's focus is on helping you to create simple HTML pages with images using TextEdit. For example, after you create a document with images in TextEdit, you can save the file as WebArchive, use this utility to convert the file into a directory structure, and then upload the extracted directory structure to a web server. This process can be used to create help files for web applications, help files for desktop applications,s or very simple web sites.
+</p><p class="p6">WebArchive files can also be created by saving a web page in Safari (saving all the graphics, css, and images). You can then extract the web page locally using WebArchive Extractor.
+</p><p class="p6">For up to date information, please see the <a href="http://robrohan.com/projects/WebArchiveExtractor/"><span class="s3">WebArchvie Extractor</span></a> project page, or the <a href="http://robrohan.com/"><span class="s3">maintainer's weblog</span></a>. If you have questions or comments about WebArchive Extractor, please visit the <a href="http://www.smallturtle.com/forum/1"><span class="s3">forum</span></a>.
+</p><p class="p5"><b>Basic Usage</b></p><p class="p1"><br></p><p class="p7">To extract an archive simply drag the web archive file onto the main window area (as seen in the picture below).
+</p><p class="p1"><br></p><p class="p2"><span class="s1"><img src="Picture 1.png" alt="Picture 1.png"></span></p><p class="p1"><br></p><p class="p7">The archive file will extract to the directory that contains the web archive, and the new directory name will be the name of the web archive file without the web archive extension. For example, dragging <i>Testfile.webarchive</i> will create a directory named <i>Testfile</i>.
+</p><p class="p1"><br></p><p class="p5"><b>Preferences</b></p><p class="p1"><br></p><p class="p7">There are a few settings you can use to fine tune the extraction. The settings are found by choosing <i>WebArchive Extractor</i> > <i>Preferences</i>... or by pressing <span class="s4">⌘, . The preferences window looks like the following picture, and we will discuss each setting below.</span>
+</p><p class="p8"><br></p><p class="p2"><span class="s1"><img src="Picture 2.png" alt="Picture 2.png"></span></p><ul class="ul1"><li style="margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Lucida Grande"><b>Index file:</b> The index file setting controls what name the main file will have after extraction. The default is index.html.</li><li style="margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Lucida Grande"><b>Output type:</b> The output type controls how the HTML will be written in the extracted file. There is very little difference between these settings aside from the inclusion / exclusion of the &lt;?xml ?> processing instruction. If you are including the extracted HTML into a PHP file, you'll want to set the Output type to HTML (otherwise PHP will error when it sees the first &lt;?)</li><li style="margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Lucida Grande"><b>Asset URL:</b> If you put a URL here, the URL will be added before the images upon extraction. For example, assume you have an image in the document named Logo.gif. If the <b>Asset URL</b> setting is blank, the image tag's source attribute will simply be src="Logo.gif". If, however, you set this setting to http://robrohan.com/images/ the source attribute will be src="http://robrohan.com/images/Logo.gif". This setting is helpful if you are using a framework that requires full paths to images, or you would like to use placeholder images to point to "live" images maintained elsewhere.</li></ul><p class="p2"><span class="s1"><img src="Picture 3.png" alt="Picture 3.png"></span></p><ul class="ul1"><li style="margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica"><b>Check for update on startup:</b> This will allow WebArchive Extractor to see if there is a newer version available when the application is run.</li></ul><p class="p1"><br></p><p class="p5"><b>Log</b></p><p class="p10"><br></p><p class="p7">There is a simple log that will display errors or messages during an extraction. To view the log select <i>View</i> > <i>Show Log</i> from the menu bar, or press the keys <span class="s4">⌘L. An example of the log window can be seen below.</span>
+</p><p class="p8"><br></p><p class="p2"><span class="s1"><img src="Log.png" alt="Log.png"></span></p><p class="p1"><br></p><p class="p5"><b>Getting the Source</b></p><p class="p10"><br></p><p class="p6">To get the WebArchive Extractor source code, you'll need to use the free and open source <a href="http://git.or.cz/"><span class="s3">git</span></a> version control system. Once you have git installed, you can clone the repository by using the following command:
+</p><p class="p7">$ git clone http://robrohan.com/projects/WebArchiveExtractor/repo/WebArchiveExtractor.git
+</p><p class="p10"><br></p><p class="p5"><b>Licenses</b></p><p class="p1"><br></p><p class="p7">Source code: Copyright © 2007 Rob Rohan. All rights reserved.
+</p><p class="p7">Source code: Copyright © 2006 Vitaly Davidenko. Apple Public License
+</p><p class="p7">Icons: Copyright © Everaldo Coelho. Crystal Project Icons. http://www.everaldo.com <span class="s5">GNU GPL</span>
+</p><p class="p7">Sparkle Self updater: Copyright (c) 2002, Brent Simmons http://sparkle.andymatuschak.org/ MIT Like
+</p><p class="p1"><br></p><p class="p5"><b>Changes</b></p><p class="p11"><br></p><p class="p7">Please note: this section will not be updated, and is only here to show past changes before the code was forked. The WebArchive Extractor source code is in a publicly available source code repository. If you are curious about the changes, please consult the repository (see the Getting the Source section).
+</p><p class="p1"><br></p><p class="p7"><b>Version 0.3<span class="Apple-converted-space"> </span> 2007-09-18</b></p><p class="p7">Forking from the Sourceforge site by Rob Rohan. Mostly just a UI clean up and a re-release. To get the original code with the Automator task see: https://sourceforge.net/projects/webarchivext/
+</p><p class="p1"><br></p><p class="p7"><b>Version 0.2</b><span class="Apple-converted-space"> </span></p><p class="p7">Improves stability and addresses a number of other minor issues.
+</p><p class="p7"><span class="Apple-converted-space"> </span>- crash on releasing of autorelease pool fixed (in NSCoreDragReceiveProc)
+</p><p class="p7"><span class="Apple-converted-space"> </span>- main resource name changed to webarchive-index.html
+</p><p class="p7"><span class="Apple-converted-space"> </span>- bundle identifiers changed
+</p><p class="p1"><br></p><p class="p7"><b>Version 0.1</b></p><p class="p7">initial release
+</p></body></html>
