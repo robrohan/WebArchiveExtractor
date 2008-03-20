@@ -167,7 +167,8 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     return YES;
 }
 
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender 
+{
     NSPasteboard *pboard;
     NSDragOperation sourceDragMask;
 	
