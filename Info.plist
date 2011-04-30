@@ -25,11 +25,15 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.7</string>
+	<string>0.8</string>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>WebArchiveExtractor.sdef</string>
 	<key>SUFeedURL</key>
 	<string>http://robrohan.com/projects/WebArchiveExtractor/releases/</string>
 </dict>

@@ -6,6 +6,19 @@
 	<array>
 		<dict>
 			<key>CLASS</key>
+			<string>AppDelegate</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>circleView</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
 			<string>OutputTypeController</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>

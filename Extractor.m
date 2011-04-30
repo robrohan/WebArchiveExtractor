@@ -74,16 +74,18 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	NSString* absoluteString = [url absoluteString];
 	NSString* path = [url path];
 	
-	//NSLog(@"resource url absoluteString = %s\n", [absoluteString cString] );
-    [m_resourceLookupTable setObject:resource forKey:absoluteString];
-	
-	//NSLog(@"resource url path = %s\n", [path cString] );
-	[m_resourceLookupTable setObject:resource forKey:path];
-	
-	BOOL isFile = [url isFileURL];
-	if (isFile)
-	{
-		//todo
+	if(path != nil) {
+		//NSLog(@"resource url absoluteString = %s\n", [absoluteString cString] );
+		[m_resourceLookupTable setObject:resource forKey:absoluteString];
+		
+		//NSLog(@"resource url path = %s\n", [path cString] );
+		[m_resourceLookupTable setObject:resource forKey:path];
+		
+		//BOOL isFile = [url isFileURL];
+		//if (isFile)
+		//{
+			//todo
+		//}
 	}
 }
 
