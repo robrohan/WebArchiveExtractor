@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="">
+<suite name="WebArchive Extractor" code="WAEs" 
+	description="Commands and classes for WebArchive Extractor">
+	
+		<class name="application" code="capp" description="" 
+			inherits="NSCoreSuite.NSApplication">
+			<cocoa class="NSApplication"/>
+				
+				<!-- http://developer.apple.com/documentation/Cocoa/Conceptual/ScriptableCocoaApplications/SApps_about_apps/chapter_2_section_4.html#//apple_ref/doc/uid/TP40001976-SW11 -->
+				<property name="webarchive" code="wbav" 
+					type="file" description="The Archive file to extract">
+					<cocoa key="archivePath"/>
+				</property>
+				
+				<!-- file NSURL "file" -->
+
+				<!-- <command name="extract" code="waesextract" description="Extract the WebArchive">
+					<cocoa class="AppDelegate"/>
+				</command> -->
+				
+				<!-- 
+				<direct-parameter description="The file(s) to be opened.">
+					<type type="file" list="yes"/>
+				</direct-parameter>
+				-->
+		</class>
+	
+</suite>
+</dictionary>
