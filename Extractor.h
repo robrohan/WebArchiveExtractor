@@ -37,6 +37,12 @@
 - (void) loadWebArchive:(NSString*) pathToWebArchive;
 
 /**
+parse WebArchive (can be main archive, or subframeArchives)
+added by Robert Covington to handle archives with subframeArchives
+*/
+-(void) parseWebArchive:(WebArchive *) archiveToParse; 
+
+/**
  * add resource to resource table
  */
 - (void) addResource:(WebResource *) resource;

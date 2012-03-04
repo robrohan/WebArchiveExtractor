@@ -46,10 +46,49 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	WebArchive * archive = [[WebArchive alloc] initWithData:webArchiveContent];
 	
 	
-	m_mainResource = [[archive mainResource] retain] ;
+	/* Added method parseWebArchive to more easily deal with subframeArchives in a looping fashion
+	 Deal with main resource first...may or may not cover it all - Robert Covington artlythere@kagi.com
+	12/12/11
+	 */
+	
+	[self parseWebArchive:archive ];
+	
+	 /*
+	 Check for SubFrameArchives - catches anything left over...some sites using frames will
+	  invoke this and otherwise would generate only a single HTML index file
+	  - Robert Covington artlythere@kagi.com 12/12/11
+	 */
+	
+	NSArray * subArchives = [archive subframeArchives];
+	
+	if (subArchives)
+	{
+		int i;
+		for (i=0; i<[subArchives count]; i++)
+		{
+			WebArchive * nuArchive = [WebArchive alloc];
+			nuArchive = [subArchives objectAtIndex:i];
+			if (nuArchive)
+			{
+				[self parseWebArchive:nuArchive];
+				[nuArchive release]; // release subArchive
+			}
+		}
+		
+	}  /* end subArchive processing */
+}  /* end method */
+
+
+-(void) parseWebArchive:(WebArchive *) archiveToParse
+{
+	/* Added method parseWebArchive to more easily deal with subframeArchives in a looping fashion
+	- Robert Covington artlythere@kagi.com
+	 12/12/11
+	 */
+	m_mainResource = [[archiveToParse mainResource] retain];
 	[self addResource:m_mainResource];
 	
-	NSArray * subresources = [archive  subresources];
+	NSArray * subresources = [archiveToParse subresources];
 	if (subresources)
 	{
 		WebResource* resource;
@@ -61,7 +100,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		}	
 	}
 	
-	[archive release];
+	[archiveToParse release];
 }
 
 
@@ -96,6 +135,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	
 	if ([fm fileExistsAtPath:path isDirectory:  &isDirectory])
 	{
+        //removeItemAtURL:error:
 		if ([fm removeFileAtPath:path handler:nil]==NO)
 		{
 			NSLog(
@@ -110,6 +150,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		}
 	}
 	
+    //createDirectoryAtURL:withIntermediateDirectories:attributes:error:
 	if ([fm createDirectoryAtPath:path attributes:nil]!=YES) 
 	{
 		NSLog(
@@ -225,7 +266,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" 
 										   error: &err];
 			if (err != nil) {
-				NSLog(
+				NSLog(@"%@",
 					  NSLocalizedStringFromTable(
 												 @"cannot execute xpath", 
 												 @"InfoPlist", 
