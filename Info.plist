@@ -36,5 +36,7 @@
 	<string>WebArchiveExtractor.sdef</string>
 	<key>SUFeedURL</key>
 	<string>http://robrohan.com/projects/WebArchiveExtractor/releases/</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 </dict>
 </plist>
