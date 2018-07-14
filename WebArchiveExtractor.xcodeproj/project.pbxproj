@@ -10,28 +10,18 @@
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		DA16F9170CB8965500B792B3 /* extract_archive.png in Resources */ = {isa = PBXBuildFile; fileRef = DA16F9150CB8965500B792B3 /* extract_archive.png */; };
-		DA16F9420CB89B5200B792B3 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA16F92E0CB89B5200B792B3 /* Sparkle.framework */; };
-		DA16F9470CB89BAC00B792B3 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA16F92E0CB89B5200B792B3 /* Sparkle.framework */; };
 		DA1A776C0F5EA4B400045781 /* WebArchiveExtractor.sdef in Resources */ = {isa = PBXBuildFile; fileRef = DA1A776B0F5EA4B400045781 /* WebArchiveExtractor.sdef */; };
-		DA3907CA0CB8AC2900B9FAB0 /* LICENSE.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */; };
 		DA60BC480CA0B2AC000393B9 /* Extractor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA60BC470CA0B2AC000393B9 /* Extractor.m */; };
 		DA60BC510CA0B4A5000393B9 /* WebArchiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA60BC500CA0B4A5000393B9 /* WebArchiveController.m */; };
 		DA60BCB60CA0BC82000393B9 /* ArchiveDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */; };
-		DA60BD070CA0BFD4000393B9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA60BD060CA0BFD4000393B9 /* WebKit.framework */; };
 		DA60BF2F0CA0C6B1000393B9 /* CHANGES.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */; };
-		DA60BF300CA0C6B1000393B9 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF2E0CA0C6B1000393B9 /* README.rtf */; };
-		DA60BF4A0CA0C963000393B9 /* WebArchiveExtractor.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */; };
 		DA6A0B960CB87A7D00FDC439 /* MenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6A0B940CB87A7D00FDC439 /* MenuDelegate.m */; };
-		DA85752F0D145FAE0024813B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = DA8575280D145FAE0024813B /* index.html */; };
-		DA8575300D145FAE0024813B /* Log.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8575290D145FAE0024813B /* Log.png */; };
-		DA8575310D145FAE0024813B /* Pasted Graphic 2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DA85752A0D145FAE0024813B /* Pasted Graphic 2.tiff */; };
-		DA8575320D145FAE0024813B /* Picture 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DA85752B0D145FAE0024813B /* Picture 1.png */; };
-		DA8575330D145FAE0024813B /* Picture 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA85752C0D145FAE0024813B /* Picture 2.png */; };
-		DA8575340D145FAE0024813B /* Picture 3.png in Resources */ = {isa = PBXBuildFile; fileRef = DA85752D0D145FAE0024813B /* Picture 3.png */; };
-		DA8575390D1460F10024813B /* WebArchiveExtractorHelp.helpindex in Resources */ = {isa = PBXBuildFile; fileRef = DA8575380D1460F10024813B /* WebArchiveExtractorHelp.helpindex */; };
 		DA85756D0D1464950024813B /* WebArchiveExtractorHelp in Resources */ = {isa = PBXBuildFile; fileRef = DA8575640D1464950024813B /* WebArchiveExtractorHelp */; };
+		DA89598F20F995590039689D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA89598D20F9954D0039689D /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DA89599120F9955F0039689D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA89599020F9955F0039689D /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DA89599320F995C10039689D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA89599220F995C10039689D /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DA8FF56520F96CB500A59D44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA8FF56420F96CB500A59D44 /* Images.xcassets */; };
 		DAACE7FE0CBABE1900079E23 /* OutputType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAACE7FC0CBABE1900079E23 /* OutputType.h */; };
 		DAACE7FF0CBABE1900079E23 /* OutputType.m in Sources */ = {isa = PBXBuildFile; fileRef = DAACE7FD0CBABE1900079E23 /* OutputType.m */; };
 		DAACE8070CBABE5700079E23 /* OutputTypeController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAACE8050CBABE5700079E23 /* OutputTypeController.h */; };
@@ -45,7 +35,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DA16F9470CB89BAC00B792B3 /* Sparkle.framework in CopyFiles */,
 				DAACE7FE0CBABE1900079E23 /* OutputType.h in CopyFiles */,
 				DAACE8070CBABE5700079E23 /* OutputTypeController.h in CopyFiles */,
 			);
@@ -55,40 +44,23 @@
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* WebArchiveExtractor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebArchiveExtractor_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* WebArchive Extractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WebArchive Extractor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* WebArchiveExtractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebArchiveExtractor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA16F9150CB8965500B792B3 /* extract_archive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = extract_archive.png; sourceTree = "<group>"; };
-		DA16F9160CB8965500B792B3 /* DropTargetGraphic.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = DropTargetGraphic.psd; sourceTree = "<group>"; };
-		DA16F92E0CB89B5200B792B3 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		DA1A776B0F5EA4B400045781 /* WebArchiveExtractor.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.sdef; path = WebArchiveExtractor.sdef; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
-		DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = LICENSE.rtfd; sourceTree = "<group>"; };
 		DA60BC460CA0B2AC000393B9 /* Extractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extractor.h; sourceTree = "<group>"; };
 		DA60BC470CA0B2AC000393B9 /* Extractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extractor.m; sourceTree = "<group>"; };
 		DA60BC4F0CA0B4A5000393B9 /* WebArchiveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebArchiveController.h; sourceTree = "<group>"; };
 		DA60BC500CA0B4A5000393B9 /* WebArchiveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebArchiveController.m; sourceTree = "<group>"; };
 		DA60BCB40CA0BC82000393B9 /* ArchiveDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveDropView.h; sourceTree = "<group>"; };
 		DA60BCB50CA0BC82000393B9 /* ArchiveDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveDropView.m; sourceTree = "<group>"; };
-		DA60BD060CA0BFD4000393B9 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = CHANGES.rtf; sourceTree = "<group>"; };
-		DA60BF2E0CA0C6B1000393B9 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
-		DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = WebArchiveExtractor.icns; sourceTree = "<group>"; };
 		DA6A0B940CB87A7D00FDC439 /* MenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDelegate.m; sourceTree = "<group>"; };
 		DA6A0B950CB87A7D00FDC439 /* MenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDelegate.h; sourceTree = "<group>"; };
-		DA8575280D145FAE0024813B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		DA8575290D145FAE0024813B /* Log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Log.png; sourceTree = "<group>"; };
-		DA85752A0D145FAE0024813B /* Pasted Graphic 2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Pasted Graphic 2.tiff"; sourceTree = "<group>"; };
-		DA85752B0D145FAE0024813B /* Picture 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Picture 1.png"; sourceTree = "<group>"; };
-		DA85752C0D145FAE0024813B /* Picture 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Picture 2.png"; sourceTree = "<group>"; };
-		DA85752D0D145FAE0024813B /* Picture 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Picture 3.png"; sourceTree = "<group>"; };
 		DA85752E0D145FAE0024813B /* WebArchiveExtractorHelp.webarchive */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebArchiveExtractorHelp.webarchive; sourceTree = "<group>"; };
-		DA8575380D1460F10024813B /* WebArchiveExtractorHelp.helpindex */ = {isa = PBXFileReference; lastKnownFileType = file; path = WebArchiveExtractorHelp.helpindex; sourceTree = "<group>"; };
 		DA8575510D1464110024813B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		DA8575520D1464110024813B /* Log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Log.png; sourceTree = "<group>"; };
 		DA8575530D1464110024813B /* Pasted Graphic 2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Pasted Graphic 2.tiff"; sourceTree = "<group>"; };
@@ -97,6 +69,12 @@
 		DA8575560D1464110024813B /* Picture 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Picture 3.png"; sourceTree = "<group>"; };
 		DA8575570D1464110024813B /* WebArchiveExtractorHelp.helpindex */ = {isa = PBXFileReference; lastKnownFileType = file; path = WebArchiveExtractorHelp.helpindex; sourceTree = "<group>"; };
 		DA8575640D1464950024813B /* WebArchiveExtractorHelp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WebArchiveExtractorHelp; sourceTree = "<group>"; };
+		DA89598D20F9954D0039689D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		DA89599020F9955F0039689D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		DA89599220F995C10039689D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DA89599420F9B1BE0039689D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DA89599520F9B1BE0039689D /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		DA8FF56420F96CB500A59D44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "WebArchive Extractor/Images.xcassets"; sourceTree = "<group>"; };
 		DAACE7FC0CBABE1900079E23 /* OutputType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputType.h; sourceTree = "<group>"; };
 		DAACE7FD0CBABE1900079E23 /* OutputType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputType.m; sourceTree = "<group>"; };
 		DAACE8050CBABE5700079E23 /* OutputTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputTypeController.h; sourceTree = "<group>"; };
@@ -108,9 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				DA60BD070CA0BFD4000393B9 /* WebKit.framework in Frameworks */,
-				DA16F9420CB89B5200B792B3 /* Sparkle.framework in Frameworks */,
+				DA89599320F995C10039689D /* Foundation.framework in Frameworks */,
+				DA89599120F9955F0039689D /* WebKit.framework in Frameworks */,
+				DA89598F20F995590039689D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,30 +104,10 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DA16F92E0CB89B5200B792B3 /* Sparkle.framework */,
-				DA60BD060CA0BFD4000393B9 /* WebKit.framework */,
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* WebArchive Extractor.app */,
+				8D1107320486CEB800E47090 /* WebArchiveExtractor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,7 +115,6 @@
 		29B97314FDCFA39411CA2CEA /* WebArchiveExtractor */ = {
 			isa = PBXGroup;
 			children = (
-				DA8575640D1464950024813B /* WebArchiveExtractorHelp */,
 				DA8575500D1464110024813B /* WebArchiveExtractorHelp */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -180,14 +137,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DA8575270D145FAE0024813B /* WebArchiveExtractorHelp */,
+				DA8575640D1464950024813B /* WebArchiveExtractorHelp */,
+				DA8FF56420F96CB500A59D44 /* Images.xcassets */,
 				DA85752E0D145FAE0024813B /* WebArchiveExtractorHelp.webarchive */,
 				DA16F9150CB8965500B792B3 /* extract_archive.png */,
-				DA16F9160CB8965500B792B3 /* DropTargetGraphic.psd */,
-				DA60BF490CA0C963000393B9 /* WebArchiveExtractor.icns */,
-				DA3907C60CB8AC2900B9FAB0 /* LICENSE.rtfd */,
 				DA60BF2D0CA0C6B1000393B9 /* CHANGES.rtf */,
-				DA60BF2E0CA0C6B1000393B9 /* README.rtf */,
+				DA89599520F9B1BE0039689D /* LICENSE.md */,
+				DA89599420F9B1BE0039689D /* README.md */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -199,8 +155,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				DA89599220F995C10039689D /* Foundation.framework */,
+				DA89599020F9955F0039689D /* WebKit.framework */,
+				DA89598D20F9954D0039689D /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,20 +187,6 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		DA8575270D145FAE0024813B /* WebArchiveExtractorHelp */ = {
-			isa = PBXGroup;
-			children = (
-				DA8575380D1460F10024813B /* WebArchiveExtractorHelp.helpindex */,
-				DA8575280D145FAE0024813B /* index.html */,
-				DA8575290D145FAE0024813B /* Log.png */,
-				DA85752A0D145FAE0024813B /* Pasted Graphic 2.tiff */,
-				DA85752B0D145FAE0024813B /* Picture 1.png */,
-				DA85752C0D145FAE0024813B /* Picture 2.png */,
-				DA85752D0D145FAE0024813B /* Picture 3.png */,
-			);
-			path = WebArchiveExtractorHelp;
-			sourceTree = "<group>";
-		};
 		DA8575500D1464110024813B /* WebArchiveExtractorHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,9 +213,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* WebArchive Extractor */ = {
+		8D1107260486CEB800E47090 /* WebArchiveExtractor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "WebArchive Extractor" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "WebArchiveExtractor" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -285,10 +228,10 @@
 			comments = "0.8 Fixed a bug with base64 encoded inline images";
 			dependencies = (
 			);
-			name = "WebArchive Extractor";
+			name = WebArchiveExtractor;
 			productInstallPath = "$(HOME)/Applications";
 			productName = WebArchiveExtractor;
-			productReference = 8D1107320486CEB800E47090 /* WebArchive Extractor.app */;
+			productReference = 8D1107320486CEB800E47090 /* WebArchiveExtractor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -297,7 +240,13 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0940;
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = 96MW2MVPWL;
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WebArchiveExtractor" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -313,7 +262,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* WebArchive Extractor */,
+				8D1107260486CEB800E47090 /* WebArchiveExtractor */,
 			);
 		};
 /* End PBXProject section */
@@ -327,16 +276,7 @@
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				DA60BF2F0CA0C6B1000393B9 /* CHANGES.rtf in Resources */,
-				DA60BF300CA0C6B1000393B9 /* README.rtf in Resources */,
-				DA60BF4A0CA0C963000393B9 /* WebArchiveExtractor.icns in Resources */,
-				DA3907CA0CB8AC2900B9FAB0 /* LICENSE.rtfd in Resources */,
-				DA85752F0D145FAE0024813B /* index.html in Resources */,
-				DA8575300D145FAE0024813B /* Log.png in Resources */,
-				DA8575310D145FAE0024813B /* Pasted Graphic 2.tiff in Resources */,
-				DA8575320D145FAE0024813B /* Picture 1.png in Resources */,
-				DA8575330D145FAE0024813B /* Picture 2.png in Resources */,
-				DA8575340D145FAE0024813B /* Picture 3.png in Resources */,
-				DA8575390D1460F10024813B /* WebArchiveExtractorHelp.helpindex in Resources */,
+				DA8FF56520F96CB500A59D44 /* Images.xcassets in Resources */,
 				DA85756D0D1464950024813B /* WebArchiveExtractorHelp in Resources */,
 				DA1A776C0F5EA4B400045781 /* WebArchiveExtractor.sdef in Resources */,
 			);
@@ -400,8 +340,12 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 96MW2MVPWL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -412,7 +356,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = "WebArchive Extractor";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.robrohan.WebArchiveExtractor;
+				PRODUCT_NAME = WebArchiveExtractor;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
@@ -422,7 +370,11 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 96MW2MVPWL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -432,7 +384,10 @@
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = "WebArchive Extractor";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.robrohan.WebArchiveExtractor;
+				PRODUCT_NAME = WebArchiveExtractor;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -441,25 +396,80 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "WebArchive Extractor" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "WebArchiveExtractor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,

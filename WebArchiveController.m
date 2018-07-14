@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
 	NSLog(@"%@", NSLocalizedStringFromTable(@"NSHumanReadableCopyright", @"InfoPlist", @"Copyright"));
-	[mainWindow setDelegate:self];
+	[mainWindow setDelegate: (id<NSWindowDelegate>)self];
 }
 
 - (void)windowWillClose:(NSNotification *)aNotification {

@@ -6,10 +6,10 @@
 {
 	if ([logWindow isVisible]) {
 		[logWindow close];
-		[logMenuItem setTitle:@"Show Log"];
+        [logMenuItem setTitle: NSLocalizedString(@"Show Log", @"Show the log")];
 	} else {
 		[logWindow makeKeyAndOrderFront:self];
-		[logMenuItem setTitle:@"Hide Log"];
+        [logMenuItem setTitle: NSLocalizedString(@"Hide Log", @"Hide the log")];
 	}
 }
 
