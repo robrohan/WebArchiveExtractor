@@ -4,28 +4,28 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>WebArchiveExtractorHelp</string>
 	<key>CFBundleHelpBookName</key>
 	<string>WebArchive Extractor Help</string>
-	<key>CFBundleIconFile</key>
-	<string>WebArchiveExtractor</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.robrohan.WebArchiveExtractor</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.8</string>
+	<string>0.9</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSMainNibFile</key>
@@ -34,9 +34,5 @@
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>
 	<string>WebArchiveExtractor.sdef</string>
-	<key>SUFeedURL</key>
-	<string>http://robrohan.com/projects/WebArchiveExtractor/releases/</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.utilities</string>
 </dict>
 </plist>

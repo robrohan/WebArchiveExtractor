@@ -18,9 +18,9 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary: [log typingAttributes]];
 	[dict setValue:color forKey:NSForegroundColorAttributeName];
 	[log setTypingAttributes:dict];
-	[log insertText: message ];
-	[log insertText: @"\n" ];
-	[log setEditable:NO];
+    [log insertText: message replacementRange: [log selectedRange]];
+    [log insertText: @"\n" replacementRange: [log selectedRange]];
+    [log setEditable:NO];
 	[log displayIfNeeded];
 }
 
@@ -45,7 +45,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	NSRect ourBounds = [self bounds];
     NSImage *image = [self image];
     [super drawRect:rect];
-    [image compositeToPoint:(ourBounds.origin) operation:NSCompositeSourceOver];
+    [image drawAtPoint:(ourBounds.origin) fromRect:rect operation:NSCompositingOperationSourceOver fraction:1];
 }
 
 - (void)setImage:(NSImage *)newImage
@@ -85,7 +85,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
 	[logOutput selectAll:self];
-	[logOutput insertText:@""];
+    [logOutput insertText:@"" replacementRange:logOutput.selectedRange];
     NSPasteboard *pboard = [sender draggingPasteboard];
 	
 	///////////////////////////////////
@@ -120,7 +120,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-        int numberOfFiles = [files count];
+        unsigned long numberOfFiles = [files count];
 		//NSLog(@"%i\n", numberOfFiles);
 		int i;
 		for (i=0; i<numberOfFiles; i++)
@@ -147,13 +147,14 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 						outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
 					}
 					
-					Extractor * extr = [[[Extractor alloc] autorelease ] init];
+					Extractor * extr = [[Extractor alloc] init];
 					[extr loadWebArchive: fileName];
 					[extr setEntryFileName: indexFileName];
 					[extr setContentKind: type];
 					[extr setURLPrepend: URLPrepend];
 					NSString * mainResourcePath = [extr extractResources: outputPath];
-					
+                    [extr release];
+                    
 					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
 					
 				}
@@ -170,9 +171,9 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender 
 {
     NSPasteboard *pboard;
-    NSDragOperation sourceDragMask;
+    // NSDragOperation sourceDragMask;
 	
-    sourceDragMask = [sender draggingSourceOperationMask];
+    // sourceDragMask = [sender draggingSourceOperationMask];
     pboard = [sender draggingPasteboard];
 	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {

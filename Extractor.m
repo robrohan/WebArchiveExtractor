@@ -21,11 +21,11 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (id) init
 {
-	[super init];
-	
-	//default to XHTML if there is nothing else
-	contentKind = NSXMLDocumentXHTMLKind;
-		
+	self = [super init];
+    if(self != nil) {
+        //default to XHTML if there is nothing else
+        contentKind = NSXMLDocumentXHTMLKind;
+    }
 	return self;
 }
 
@@ -58,24 +58,25 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	  invoke this and otherwise would generate only a single HTML index file
 	  - Robert Covington artlythere@kagi.com 12/12/11
 	 */
-	
-	NSArray * subArchives = [archive subframeArchives];
-	
-	if (subArchives)
-	{
-		int i;
-		for (i=0; i<[subArchives count]; i++)
-		{
-			WebArchive * nuArchive = [WebArchive alloc];
-			nuArchive = [subArchives objectAtIndex:i];
-			if (nuArchive)
-			{
-				[self parseWebArchive:nuArchive];
-				[nuArchive release]; // release subArchive
-			}
-		}
-		
-	}  /* end subArchive processing */
+// TODO: Causes bad thread access. don't want to bother with this at the moment
+//    NSArray * subArchives = [archive subframeArchives];
+//
+//    if (subArchives)
+//    {
+//        int i;
+//        for (i=0; i<[subArchives count]; i++)
+//        {
+//            WebArchive * nuArchive = [WebArchive alloc];
+//            nuArchive = [subArchives objectAtIndex:i];
+//            if (nuArchive)
+//            {
+//                [self parseWebArchive:nuArchive];
+//                [nuArchive release]; // release subArchive
+//            }
+//        }
+//
+//    }  /* end subArchive processing */
+    [archive release];
 }  /* end method */
 
 
@@ -100,7 +101,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		}	
 	}
 	
-	[archiveToParse release];
+	// [archiveToParse release];
 }
 
 
@@ -114,17 +115,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	NSString* path = [url path];
 	
 	if(path != nil) {
-		//NSLog(@"resource url absoluteString = %s\n", [absoluteString cString] );
 		[m_resourceLookupTable setObject:resource forKey:absoluteString];
-		
-		//NSLog(@"resource url path = %s\n", [path cString] );
 		[m_resourceLookupTable setObject:resource forKey:path];
-		
-		//BOOL isFile = [url isFileURL];
-		//if (isFile)
-		//{
-			//todo
-		//}
 	}
 }
 
@@ -136,7 +128,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	if ([fm fileExistsAtPath:path isDirectory:  &isDirectory])
 	{
         //removeItemAtURL:error:
-		if ([fm removeFileAtPath:path handler:nil]==NO)
+		if ([fm removeItemAtPath:path error:nil] == NO)
 		{
 			NSLog(
 				  NSLocalizedStringFromTable(
@@ -150,8 +142,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		}
 	}
 	
-    //createDirectoryAtURL:withIntermediateDirectories:attributes:error:
-	if ([fm createDirectoryAtPath:path attributes:nil]!=YES) 
+    if([fm createDirectoryAtPath:path withIntermediateDirectories:true attributes:nil error:nil] == NO)
 	{
 		NSLog(
 			  NSLocalizedStringFromTable(
@@ -203,8 +194,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 				[self outputResource:resource filePath:filePath packagePath:path];
 			} else {
 				//create directory
-				BOOL isDirectory = YES; 
-				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath attributes:nil]!=YES) {
+				BOOL isDirectory = YES;
+				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil] != YES) {
 					NSLog(
 						  NSLocalizedStringFromTable(
 													 @"cannot create", 
@@ -234,7 +225,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			encoding = NSISOLatin1StringEncoding;
 		}
 
-		NSString * source = [[[NSString alloc] autorelease] initWithData:[resource data] 
+		NSString * source = [[NSString alloc] initWithData:[resource data]
 																encoding: encoding];
 		
 		NSLog(
@@ -245,7 +236,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		NSError * err = nil;
 		NSXMLDocument * doc = [NSXMLDocument alloc];
 		doc = [doc initWithXMLString: source options: NSXMLDocumentTidyHTML error: &err];
-		
+        [source release];
+        
 		/*
 		 Returns the kind of document content for output.
 		- (NSXMLDocumentContentKind)documentContentKind
@@ -289,13 +281,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 						WebResource * res = [m_resourceLookupTable objectForKey: hrefValue];
 						
 						if (res != nil) {
-							//NSLog(@"%@", [[[res URL] path] substringFromIndex:1]);
-							
-							/* NSLog(@"%@",
-								  [NSString stringWithFormat:@"%@%@", [self URLPrepend], [[[res URL] path] substringFromIndex:1]]
-									  ); */
-							
-							//[href setObjectValue: [[[res URL] path] substringFromIndex:1] ];
 							[href setObjectValue: [NSString stringWithFormat:@"%@%@", [self URLPrepend], [[[res URL] path] substringFromIndex:1]]];
 						}
 					}
@@ -305,8 +290,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			NSString * filePathXHtml = composeEntryPointPath(packagePath, [self entryFileName]);
 			
 			[doc setCharacterEncoding: @"UTF-8"];
-			
-			if (![[doc XMLDataWithOptions: NSXMLDocumentXHTMLKind] writeToFile: filePathXHtml atomically: NO]) {
+
+			if (![[doc XMLDataWithOptions: NSXMLDocumentTidyHTML] writeToFile: filePathXHtml atomically: NO]) {
 				NSLog(
 					  NSLocalizedStringFromTable(
 												 @"cannot write xhtml", 
