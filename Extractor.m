@@ -64,7 +64,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
     if (subArchives)
     {
-        int i;
+        NSUInteger i;
         for (i=0; i<[subArchives count]; i++)
         {
             WebArchive * nuArchive = [WebArchive alloc];
@@ -93,7 +93,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	if (subresources)
 	{
 		WebResource* resource;
-		int i;
+		NSUInteger i;
 		for (i=0; i<[subresources count]; i++)
 		{
 			resource = (WebResource*) [subresources objectAtIndex:i];
@@ -181,7 +181,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	
 	NSArray * components = [urlPath componentsSeparatedByString:@"/"];
 	
-	int i;
+	NSUInteger i;
 	for (i=0; i<[components count]; i++) {
 		NSString * fname = (NSString*) [components objectAtIndex:i];
 		
@@ -262,7 +262,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 												 )
 					  );
 			} else {
-				int i;
+				NSUInteger i;
 				for (i=0; i<[images count]; i++) {
 					
 					NSXMLElement * link = (NSXMLElement *) [images objectAtIndex: i];
@@ -341,12 +341,12 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	return URLPrepend;
 }
 
-- (void) setContentKind:(int) kind
+- (void) setContentKind:(NSXMLDocumentContentKind) kind
 {
 	contentKind = kind;
 }
 
-- (int) contentKind
+- (NSXMLDocumentContentKind) contentKind
 {
 	return contentKind;
 }

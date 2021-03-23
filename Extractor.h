@@ -26,7 +26,7 @@
 	/** the index file name */
 	NSString * entryFileName;
 	/** what kind of file to create (XML, XHTML, etc) */
-	int contentKind;
+	NSXMLDocumentContentKind contentKind;
 	/** URL to add to the begining of the hrefs / srcs */
 	NSString * URLPrepend;
 }
@@ -69,8 +69,8 @@ added by Robert Covington to handle archives with subframeArchives
 - (void) setEntryFileName:(NSString *) filename;
 - (NSString *) entryFileName;
 
-- (void) setContentKind:(int) kind;
-- (int) contentKind;
+- (void) setContentKind:(NSXMLDocumentContentKind) kind;
+- (NSXMLDocumentContentKind) contentKind;
 
 - (void) setURLPrepend:(NSString *) url;
 - (NSString *) URLPrepend;

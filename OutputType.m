@@ -21,12 +21,12 @@
 	return displayText;
 }
 
-- (void) setDocumentContentKind: (int) kind
+- (void) setDocumentContentKind: (NSXMLDocumentContentKind) kind
 {
 	documentContentKind = kind;
 }
 
-- (int) documentContentKind 
+- (NSXMLDocumentContentKind) documentContentKind 
 {
 	return documentContentKind;
 }
