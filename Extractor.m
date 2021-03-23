@@ -224,6 +224,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		NSString * source = [[NSString alloc] initWithData:[resource data]
 																encoding: encoding];
 		
+#if 0
 		NSLog(
 			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"),
 			  [resource textEncodingName]
