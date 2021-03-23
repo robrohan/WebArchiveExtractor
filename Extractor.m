@@ -98,7 +98,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		{
 			resource = (WebResource*) [subresources objectAtIndex:i];
 			[self addResource:resource];
-		}	
+		}
 	}
 	
 	// [archiveToParse release];
@@ -120,10 +120,10 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
-- (NSString *) extractResources:(NSString *) path 
+- (NSString *) extractResources:(NSString *) path
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
-	BOOL isDirectory = YES; 
+	BOOL isDirectory = YES;
 	
 	if ([fm fileExistsAtPath:path isDirectory:  &isDirectory])
 	{
@@ -132,8 +132,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		{
 			NSLog(
 				  NSLocalizedStringFromTable(
-											 @"cannot delete", 
-											 @"InfoPlist", 
+											 @"cannot delete",
+											 @"InfoPlist",
 											 @"cannot delete file - path first param"
 											 ),
 				  path
@@ -146,8 +146,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	{
 		NSLog(
 			  NSLocalizedStringFromTable(
-										 @"cannot create", 
-										 @"InfoPlist", 
+										 @"cannot create",
+										 @"InfoPlist",
 										 @"cannot create file - path first param"
 										 ),
 			  path
@@ -198,8 +198,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil] != YES) {
 					NSLog(
 						  NSLocalizedStringFromTable(
-													 @"cannot create", 
-													 @"InfoPlist", 
+													 @"cannot create",
+													 @"InfoPlist",
 													 @"cannot create file - path first param"
 													 ),
 						  filePath
@@ -213,8 +213,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
-- (void) outputResource: (WebResource *) resource 
-			   filePath: (NSString*) filePath 
+- (void) outputResource: (WebResource *) resource
+			   filePath: (NSString*) filePath
 			packagePath: (NSString*) packagePath
 {
 	if (resource == m_mainResource) {
@@ -229,7 +229,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 																encoding: encoding];
 		
 		NSLog(
-			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"), 
+			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"),
 			  [resource textEncodingName]
 		);
 		
@@ -242,9 +242,9 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		- (NSXMLDocumentContentKind)documentContentKind
 		 
 		Discussion
-			Most of the differences among content kind have to do with the handling of content-less 
-			tags such as <br>. The valid NSXMLDocumentContentKind constants are 
-			NSXMLDocumentXMLKind, NSXMLDocumentXHTMLKind, NSXMLDocumentHTMLKind, 
+			Most of the differences among content kind have to do with the handling of content-less
+			tags such as <br>. The valid NSXMLDocumentContentKind constants are
+			NSXMLDocumentXMLKind, NSXMLDocumentXHTMLKind, NSXMLDocumentHTMLKind,
 			and NSXMLDocumentTextKind.
 		*/
 		[doc setDocumentContentKind: contentKind];
@@ -253,13 +253,13 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			//process images
 			err = nil;
 			
-			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" 
+			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]"
 										   error: &err];
 			if (err != nil) {
 				NSLog(@"%@",
 					  NSLocalizedStringFromTable(
-												 @"cannot execute xpath", 
-												 @"InfoPlist", 
+												 @"cannot execute xpath",
+												 @"InfoPlist",
 												 @"Xpath execute error"
 												 )
 					  );
@@ -292,8 +292,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			if (![[doc XMLDataWithOptions: NSXMLDocumentTidyHTML] writeToFile: filePathXHtml atomically: NO]) {
 				NSLog(
 					  NSLocalizedStringFromTable(
-												 @"cannot write xhtml", 
-												 @"InfoPlist", 
+												 @"cannot write xhtml",
+												 @"InfoPlist",
 												 @"xhtml file error"
 												 ),
 					  filePath
@@ -302,8 +302,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		} else {
 			NSLog(
 				  NSLocalizedStringFromTable(
-											 @"error code", 
-											 @"InfoPlist", 
+											 @"error code",
+											 @"InfoPlist",
 											 @"extractor error. error code first param"
 											 ),
 				  [[err userInfo] valueForKey:NSLocalizedDescriptionKey]
@@ -313,8 +313,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		if (![[resource data] writeToFile:filePath atomically:NO]) {
 			NSLog(
 				NSLocalizedStringFromTable(
-										   @"cannot write xhtml", 
-										   @"InfoPlist", 
+										   @"cannot write xhtml",
+										   @"InfoPlist",
 										   @"xhtml file error"
 										   ),
 				filePath
