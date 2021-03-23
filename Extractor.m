@@ -38,8 +38,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 	else
 	{
-		m_resources = [[NSMutableSet set] retain];
-		m_resourceLookupTable = [[NSMutableDictionary dictionary] retain];
+		m_resources = [NSMutableSet set];
+		m_resourceLookupTable = [NSMutableDictionary dictionary];
 	}
 	
 	NSData * webArchiveContent = [NSData dataWithContentsOfFile:pathToWebArchive];
@@ -72,13 +72,11 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
             if (nuArchive)
             {
                 [self parseWebArchive:nuArchive];
-                [nuArchive release]; // release subArchive
             }
         }
 
     }  /* end subArchive processing */
 #endif
-    [archive release];
 }  /* end method */
 
 
@@ -88,7 +86,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	- Robert Covington artlythere@kagi.com
 	 12/12/11
 	 */
-	m_mainResource = [[archiveToParse mainResource] retain];
+	m_mainResource = [archiveToParse mainResource];
 	[self addResource:m_mainResource];
 	
 	NSArray * subresources = [archiveToParse subresources];
@@ -238,7 +236,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		NSError * err = nil;
 		NSXMLDocument * doc = [NSXMLDocument alloc];
 		doc = [doc initWithXMLString: source options: NSXMLDocumentTidyHTML error: &err];
-        [source release];
         
 		/*
 		 Returns the kind of document content for output.
@@ -253,7 +250,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		[doc setDocumentContentKind: contentKind];
 		
 		if (doc != nil)	{
-			[doc autorelease];
 			//process images
 			err = nil;
 			
@@ -329,9 +325,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (void) setEntryFileName:(NSString *) filename;
 {
-	NSString *temp = [filename copy];
-    [entryFileName release];
-    entryFileName = temp;
+    entryFileName = [filename copy];
 }
 
 - (NSString *) entryFileName;
@@ -341,9 +335,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (void) setURLPrepend:(NSString *) url
 {
-	NSString *temp = [url copy];
-    [URLPrepend release];
-    URLPrepend = temp;
+    URLPrepend = [url copy];
 }
 
 - (NSString *) URLPrepend
@@ -359,13 +351,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 - (int) contentKind
 {
 	return contentKind;
-}
-
-- (void) dealloc {
-	[m_mainResource release];
-	[m_resources release];
-	[m_resourceLookupTable release];
-	[super dealloc];
 }
 
 @end

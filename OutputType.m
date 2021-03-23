@@ -13,12 +13,7 @@
 
 - (void) setDisplayText: (NSString *) text
 {
-	/* [text retain];
-	[displayText release];
-	displayText = text; */
-	text = [text copy];
-	[displayText release];
-	displayText = text;
+	displayText = [text copy];
 }
 
 - (NSString *) displayText

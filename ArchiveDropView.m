@@ -35,7 +35,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		//set the drop target image
 		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource: @"extract_archive.png"]];
 		[self setImage:newImage];
-		[newImage release];
 	}
 	return self;
 }
@@ -50,9 +49,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 
 - (void)setImage:(NSImage *)newImage
 {
-    NSImage *temp = [newImage retain];
-    [_dropImage release];
-    _dropImage = temp;
+    _dropImage = newImage;
 }
 
 - (NSImage *)image
@@ -153,7 +150,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					[extr setContentKind: type];
 					[extr setURLPrepend: URLPrepend];
 					NSString * mainResourcePath = [extr extractResources: outputPath];
-                    [extr release];
                     
 					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
 					
