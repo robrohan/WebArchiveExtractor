@@ -218,12 +218,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			packagePath: (NSString*) packagePath
 {
 	if (resource == m_mainResource) {
-		NSStringEncoding encoding;
-		if ([@"UTF-8" isEqualToString: [m_mainResource textEncodingName]]) {
-			encoding = NSUTF8StringEncoding;
-		} else {
-			encoding = NSISOLatin1StringEncoding;
-		}
+		NSString *encodingString = [m_mainResource textEncodingName];
+		NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef) encodingString));
 
 		NSString * source = [[NSString alloc] initWithData:[resource data]
 																encoding: encoding];
@@ -232,6 +228,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"),
 			  [resource textEncodingName]
 		);
+#endif
 		
 		NSError * err = nil;
 		NSXMLDocument * doc = [NSXMLDocument alloc];
