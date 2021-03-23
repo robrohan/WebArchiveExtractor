@@ -59,23 +59,25 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	  - Robert Covington artlythere@kagi.com 12/12/11
 	 */
 // TODO: Causes bad thread access. don't want to bother with this at the moment
-//    NSArray * subArchives = [archive subframeArchives];
-//
-//    if (subArchives)
-//    {
-//        int i;
-//        for (i=0; i<[subArchives count]; i++)
-//        {
-//            WebArchive * nuArchive = [WebArchive alloc];
-//            nuArchive = [subArchives objectAtIndex:i];
-//            if (nuArchive)
-//            {
-//                [self parseWebArchive:nuArchive];
-//                [nuArchive release]; // release subArchive
-//            }
-//        }
-//
-//    }  /* end subArchive processing */
+#if 0
+	NSArray * subArchives = [archive subframeArchives];
+
+    if (subArchives)
+    {
+        int i;
+        for (i=0; i<[subArchives count]; i++)
+        {
+            WebArchive * nuArchive = [WebArchive alloc];
+            nuArchive = [subArchives objectAtIndex:i];
+            if (nuArchive)
+            {
+                [self parseWebArchive:nuArchive];
+                [nuArchive release]; // release subArchive
+            }
+        }
+
+    }  /* end subArchive processing */
+#endif
     [archive release];
 }  /* end method */
 
