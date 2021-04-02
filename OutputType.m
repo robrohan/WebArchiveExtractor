@@ -13,12 +13,7 @@
 
 - (void) setDisplayText: (NSString *) text
 {
-	/* [text retain];
-	[displayText release];
-	displayText = text; */
-	text = [text copy];
-	[displayText release];
-	displayText = text;
+	displayText = [text copy];
 }
 
 - (NSString *) displayText
@@ -26,12 +21,12 @@
 	return displayText;
 }
 
-- (void) setDocumentContentKind: (int) kind
+- (void) setDocumentContentKind: (NSXMLDocumentContentKind) kind
 {
 	documentContentKind = kind;
 }
 
-- (int) documentContentKind 
+- (NSXMLDocumentContentKind) documentContentKind 
 {
 	return documentContentKind;
 }

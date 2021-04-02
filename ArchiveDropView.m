@@ -35,7 +35,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 		//set the drop target image
 		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource: @"extract_archive.png"]];
 		[self setImage:newImage];
-		[newImage release];
 	}
 	return self;
 }
@@ -50,9 +49,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 
 - (void)setImage:(NSImage *)newImage
 {
-    NSImage *temp = [newImage retain];
-    [_dropImage release];
-    _dropImage = temp;
+    _dropImage = newImage;
 }
 
 - (NSImage *)image
@@ -101,7 +98,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	//HACK alert. I need to figure out a better way to do this. I thought the User
 	//types from the select box would get an object, but it only returns a string :-/
 	NSString * outputType = [[userDefaults values] valueForKey:@"WAEOutputType"];
-	int type = NSXMLDocumentXHTMLKind;
+	NSXMLDocumentContentKind type = NSXMLDocumentXHTMLKind;
 	if ( [outputType isEqualToString:@"HTML"] ) {
 		type = NSXMLDocumentHTMLKind;
 	} else if ( [outputType isEqualToString:@"XML"] ) {
@@ -120,9 +117,9 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-        unsigned long numberOfFiles = [files count];
+        NSUInteger numberOfFiles = [files count];
 		//NSLog(@"%i\n", numberOfFiles);
-		int i;
+		NSUInteger i;
 		for (i=0; i<numberOfFiles; i++)
 		{
 			NSString* fileName = [files objectAtIndex:i];
@@ -139,11 +136,11 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
 					NSString * outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
 					
-					int i = 0;
+					NSUInteger i = 0;
 					while([fm fileExistsAtPath:outputPath])
 					{
 						[self logWarning:[NSString stringWithFormat: NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath] ];
-						NSString * dirName = [archiveName stringByAppendingString:@"-%i"]; 
+						NSString * dirName = [archiveName stringByAppendingString:@"-%tu"];
 						outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
 					}
 					
@@ -153,7 +150,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					[extr setContentKind: type];
 					[extr setURLPrepend: URLPrepend];
 					NSString * mainResourcePath = [extr extractResources: outputPath];
-                    [extr release];
                     
 					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
 					

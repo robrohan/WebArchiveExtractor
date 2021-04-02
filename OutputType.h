@@ -10,13 +10,13 @@
 
 @interface OutputType : NSObject {
 	NSString * displayText;
-	int documentContentKind;
+	NSXMLDocumentContentKind documentContentKind;
 }
 
 - (void) setDisplayText: (NSString *) displayText;
 - (NSString *) displayText;
 
-- (void) setDocumentContentKind: (int) kind;
-- (int) documentContentKind;
+- (void) setDocumentContentKind: (NSXMLDocumentContentKind) kind;
+- (NSXMLDocumentContentKind) documentContentKind;
 
 @end

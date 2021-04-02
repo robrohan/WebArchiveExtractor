@@ -23,19 +23,16 @@
         [tmp setDisplayText: @"XML"];
         [tmp setDocumentContentKind: NSXMLDocumentXMLKind];
         [outputTypeList addObject: tmp];
-        [tmp release];
         
         tmp = [[OutputType alloc] init];
         [tmp setDisplayText: @"HTML"];
         [tmp setDocumentContentKind: NSXMLDocumentHTMLKind];
         [outputTypeList addObject: tmp];
-        [tmp release];
         
         tmp = [[OutputType alloc] init];
         [tmp setDisplayText: @"XHTML"];
         [tmp setDocumentContentKind: NSXMLDocumentXHTMLKind];
         [outputTypeList addObject: tmp];
-        [tmp release];
     }
 	
 	return self;
@@ -71,8 +68,6 @@
 - (void) dealloc
 {
 	NSLog(@"Destroying %@", self);
-	[outputTypeList release];
-	[super dealloc];
 }
 
 @end

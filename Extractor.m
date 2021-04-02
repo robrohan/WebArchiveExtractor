@@ -38,8 +38,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 	else
 	{
-		m_resources = [[NSMutableSet set] retain];
-		m_resourceLookupTable = [[NSMutableDictionary dictionary] retain];
+		m_resources = [NSMutableSet set];
+		m_resourceLookupTable = [NSMutableDictionary dictionary];
 	}
 	
 	NSData * webArchiveContent = [NSData dataWithContentsOfFile:pathToWebArchive];
@@ -59,24 +59,24 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	  - Robert Covington artlythere@kagi.com 12/12/11
 	 */
 // TODO: Causes bad thread access. don't want to bother with this at the moment
-//    NSArray * subArchives = [archive subframeArchives];
-//
-//    if (subArchives)
-//    {
-//        int i;
-//        for (i=0; i<[subArchives count]; i++)
-//        {
-//            WebArchive * nuArchive = [WebArchive alloc];
-//            nuArchive = [subArchives objectAtIndex:i];
-//            if (nuArchive)
-//            {
-//                [self parseWebArchive:nuArchive];
-//                [nuArchive release]; // release subArchive
-//            }
-//        }
-//
-//    }  /* end subArchive processing */
-    [archive release];
+#if 0
+	NSArray * subArchives = [archive subframeArchives];
+
+    if (subArchives)
+    {
+        NSUInteger i;
+        for (i=0; i<[subArchives count]; i++)
+        {
+            WebArchive * nuArchive = [WebArchive alloc];
+            nuArchive = [subArchives objectAtIndex:i];
+            if (nuArchive)
+            {
+                [self parseWebArchive:nuArchive];
+            }
+        }
+
+    }  /* end subArchive processing */
+#endif
 }  /* end method */
 
 
@@ -86,19 +86,19 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	- Robert Covington artlythere@kagi.com
 	 12/12/11
 	 */
-	m_mainResource = [[archiveToParse mainResource] retain];
+	m_mainResource = [archiveToParse mainResource];
 	[self addResource:m_mainResource];
 	
 	NSArray * subresources = [archiveToParse subresources];
 	if (subresources)
 	{
 		WebResource* resource;
-		int i;
+		NSUInteger i;
 		for (i=0; i<[subresources count]; i++)
 		{
 			resource = (WebResource*) [subresources objectAtIndex:i];
 			[self addResource:resource];
-		}	
+		}
 	}
 	
 	// [archiveToParse release];
@@ -120,10 +120,10 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
-- (NSString *) extractResources:(NSString *) path 
+- (NSString *) extractResources:(NSString *) path
 {
 	NSFileManager * fm = [NSFileManager defaultManager];
-	BOOL isDirectory = YES; 
+	BOOL isDirectory = YES;
 	
 	if ([fm fileExistsAtPath:path isDirectory:  &isDirectory])
 	{
@@ -132,8 +132,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		{
 			NSLog(
 				  NSLocalizedStringFromTable(
-											 @"cannot delete", 
-											 @"InfoPlist", 
+											 @"cannot delete",
+											 @"InfoPlist",
 											 @"cannot delete file - path first param"
 											 ),
 				  path
@@ -146,8 +146,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	{
 		NSLog(
 			  NSLocalizedStringFromTable(
-										 @"cannot create", 
-										 @"InfoPlist", 
+										 @"cannot create",
+										 @"InfoPlist",
 										 @"cannot create file - path first param"
 										 ),
 			  path
@@ -181,7 +181,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	
 	NSArray * components = [urlPath componentsSeparatedByString:@"/"];
 	
-	int i;
+	NSUInteger i;
 	for (i=0; i<[components count]; i++) {
 		NSString * fname = (NSString*) [components objectAtIndex:i];
 		
@@ -198,8 +198,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 				if (![fm fileExistsAtPath:filePath isDirectory: &isDirectory] && [fm createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil] != YES) {
 					NSLog(
 						  NSLocalizedStringFromTable(
-													 @"cannot create", 
-													 @"InfoPlist", 
+													 @"cannot create",
+													 @"InfoPlist",
 													 @"cannot create file - path first param"
 													 ),
 						  filePath
@@ -213,60 +213,56 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	}
 }
 
-- (void) outputResource: (WebResource *) resource 
-			   filePath: (NSString*) filePath 
+- (void) outputResource: (WebResource *) resource
+			   filePath: (NSString*) filePath
 			packagePath: (NSString*) packagePath
 {
 	if (resource == m_mainResource) {
-		NSStringEncoding encoding;
-		if ([@"UTF-8" isEqualToString: [m_mainResource textEncodingName]]) {
-			encoding = NSUTF8StringEncoding;
-		} else {
-			encoding = NSISOLatin1StringEncoding;
-		}
+		NSString *encodingString = [m_mainResource textEncodingName];
+		NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef) encodingString));
 
 		NSString * source = [[NSString alloc] initWithData:[resource data]
 																encoding: encoding];
 		
+#if 0
 		NSLog(
-			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"), 
+			  NSLocalizedStringFromTable(@"resource encoding is", @"InfoPlist", @"Resource encoding"),
 			  [resource textEncodingName]
 		);
+#endif
 		
 		NSError * err = nil;
 		NSXMLDocument * doc = [NSXMLDocument alloc];
 		doc = [doc initWithXMLString: source options: NSXMLDocumentTidyHTML error: &err];
-        [source release];
         
 		/*
 		 Returns the kind of document content for output.
 		- (NSXMLDocumentContentKind)documentContentKind
 		 
 		Discussion
-			Most of the differences among content kind have to do with the handling of content-less 
-			tags such as <br>. The valid NSXMLDocumentContentKind constants are 
-			NSXMLDocumentXMLKind, NSXMLDocumentXHTMLKind, NSXMLDocumentHTMLKind, 
+			Most of the differences among content kind have to do with the handling of content-less
+			tags such as <br>. The valid NSXMLDocumentContentKind constants are
+			NSXMLDocumentXMLKind, NSXMLDocumentXHTMLKind, NSXMLDocumentHTMLKind,
 			and NSXMLDocumentTextKind.
 		*/
 		[doc setDocumentContentKind: contentKind];
 		
 		if (doc != nil)	{
-			[doc autorelease];
 			//process images
 			err = nil;
 			
-			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]" 
+			NSArray* images = [doc nodesForXPath:@"descendant::node()[@src] | descendant::node()[@href]"
 										   error: &err];
 			if (err != nil) {
 				NSLog(@"%@",
 					  NSLocalizedStringFromTable(
-												 @"cannot execute xpath", 
-												 @"InfoPlist", 
+												 @"cannot execute xpath",
+												 @"InfoPlist",
 												 @"Xpath execute error"
 												 )
 					  );
 			} else {
-				int i;
+				NSUInteger i;
 				for (i=0; i<[images count]; i++) {
 					
 					NSXMLElement * link = (NSXMLElement *) [images objectAtIndex: i];
@@ -294,8 +290,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 			if (![[doc XMLDataWithOptions: NSXMLDocumentTidyHTML] writeToFile: filePathXHtml atomically: NO]) {
 				NSLog(
 					  NSLocalizedStringFromTable(
-												 @"cannot write xhtml", 
-												 @"InfoPlist", 
+												 @"cannot write xhtml",
+												 @"InfoPlist",
 												 @"xhtml file error"
 												 ),
 					  filePath
@@ -304,8 +300,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		} else {
 			NSLog(
 				  NSLocalizedStringFromTable(
-											 @"error code", 
-											 @"InfoPlist", 
+											 @"error code",
+											 @"InfoPlist",
 											 @"extractor error. error code first param"
 											 ),
 				  [[err userInfo] valueForKey:NSLocalizedDescriptionKey]
@@ -315,8 +311,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 		if (![[resource data] writeToFile:filePath atomically:NO]) {
 			NSLog(
 				NSLocalizedStringFromTable(
-										   @"cannot write xhtml", 
-										   @"InfoPlist", 
+										   @"cannot write xhtml",
+										   @"InfoPlist",
 										   @"xhtml file error"
 										   ),
 				filePath
@@ -327,9 +323,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (void) setEntryFileName:(NSString *) filename;
 {
-	NSString *temp = [filename copy];
-    [entryFileName release];
-    entryFileName = temp;
+    entryFileName = [filename copy];
 }
 
 - (NSString *) entryFileName;
@@ -339,9 +333,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (void) setURLPrepend:(NSString *) url
 {
-	NSString *temp = [url copy];
-    [URLPrepend release];
-    URLPrepend = temp;
+    URLPrepend = [url copy];
 }
 
 - (NSString *) URLPrepend
@@ -349,21 +341,14 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 	return URLPrepend;
 }
 
-- (void) setContentKind:(int) kind
+- (void) setContentKind:(NSXMLDocumentContentKind) kind
 {
 	contentKind = kind;
 }
 
-- (int) contentKind
+- (NSXMLDocumentContentKind) contentKind
 {
 	return contentKind;
-}
-
-- (void) dealloc {
-	[m_mainResource release];
-	[m_resources release];
-	[m_resourceLookupTable release];
-	[super dealloc];
 }
 
 @end
