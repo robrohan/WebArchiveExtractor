@@ -27,4 +27,12 @@ jobs:
           if [ $scheme = default ]; then scheme=$(cat default); fi
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
+          xcodebuild clean build -configuration Release -scheme "$scheme" -"$filetype_parameter" "$file_to_build" ONLY_ACTIVE_ARCH="NO" CONFIGURATION_BUILD_DIR="${{ github.workspace }}/artifact/" | xcpretty && exit ${PIPESTATUS[0]}
+      - name: Zipping App File
+        run: |
+          tar -cvf ${{ github.workspace }}/artifact/WebArchiveExtractor.tar -C ${{ github.workspace }}/artifact .
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+           name: WebArchiveExtractor.tar
+           path: ${{ github.workspace }}/artifact/WebArchiveExtractor.tar
