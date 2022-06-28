@@ -1,38 +1,61 @@
-NOTE: this file is from the original sourceforge code. There is no Automator code in this forked version
+# WebArchiveExtractor
 
-Release notes
+Mac OS X utility to un-archive .webarchive files (like when saving from Safari)
 
-Version 0.1 - initial release 
-This release contains two independent parts
+This project was forked from [Vitaly Davidenko's repo on sourceforge](https://sourceforge.net/projects/webarchivext/).
 
-Part 1. Application 'Web Archive Extractor'
+## Usage
 
-files:
-WebArchiveExtractor.zip contains Application
+You can use the utility graphically by launching WebArchiveExtractor.app directly. [See interface here.](https://robrohan.github.io/WebArchiveExtractor/)
 
-To install 'Web Archive Extractor'
- - unpack WebArchiveExtractor.zip
-  - copy WebArchiveExtractor into /Application folder 
+You can also run the same executable from from the command line:
+
+```sht
+./WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor
+```
+Running with no arguments will just launch the GUI.
+
+> An ancestor of this project supported Automator Actions at one point. This project does not have this functionality. Use the CLI for programmatic access.
+
+**CLI Usage**
+
+---
+
+Extract contents of `website.webarchive` to a directory named `website` relative to CWD:
+```sh
+WebArchiveExtractor website.webarchive
+```
+```sh
+WebArchiveExtractor -i website.webarchive
+```
+
+---
+
+Define explicit output directory:
+```sh
+WebArchiveExtractor website.webarchive -o out
+```
+
+---
+
+## Build
+You *should* be able to automatically build and sign a release for local execution by running this command in the root of the project, even if you are not an Apple developer (assuming you've got the Xcode CLI tools):
+```sh
+xcodebuild -project WebArchiveExtractor.xcodeproj
+```
+If the command fails, you'll need to open the project in Xcode to investigate.
 
 
-Part 2. Automator Action
+The resulting `WebArchiveExtractor.app` should be in `build/Release`. To install, you can just drag it to your Applications directory. 
 
-files:
-Automator-WebArchiveExtractorAction.action.zip  contains Automator Plugin
-Automator-ExtractWebarchive.zip contains sample workflow
+> Keep in mind that the executable is inside the `.app` bundle. To reference the command in your shell, you can do something like either of the following:
 
-To install Automator Action 
- - unpack zip 
- - copy WebArchiveExtractorAction.action into  /Users/<your username>/Library/Automator folder
-
-
-Version 0.2
-Version 0.2 improves stability and addresses a number of other minor issues.
--crash on releasing of autorelease pool fixed (in NSCoreDragReceiveProc)
--main resource name changed to webarchive-index.html
--bundle identifiers changed
-
-files:
-WebArchiveExtractor.0.2.zip  contains Application
-Automator-WebArchiveExtractorAction.0.2.action.zip  contains Automator Plugin
-
+Add to PATH:
+```sh
+# Add this to your shell's rc file:
+export PATH="$PATH:/Applications/WebArchiveExtractor.app/Contents/MacOS/"
+```
+Symlink to a location already in PATH:
+```sh
+ln -s /Applications/WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor ~/.local/bin/WebArchiveExtractor
+```
