@@ -61,21 +61,25 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 
 - (void)logError:(NSString*) message
 {
+    printf("\x1b[1;91m%s\x1b[0m\n", message.UTF8String);
 	logMessage(logOutput, [NSColor redColor], message);
 }
 
 - (void)logWarning:(NSString*) message
 {
+    printf("\x1b[33m%s\x1b[0m\n", message.UTF8String);
 	logMessage(logOutput, [NSColor orangeColor], message);
 }
 
 - (void)logInfo:(NSString*) message
 {
+    printf("\x1b[34m%s\x1b[0m\n", message.UTF8String);
 	logMessage(logOutput, [NSColor blueColor], message);
 }
 
 - (void)logResult:(NSString*) message
 {
+    printf("\x1b[1;32m%s\x1b[0m\n", message.UTF8String);
 	logMessage(logOutput, [NSColor darkGrayColor], message);
 }
 
@@ -84,15 +88,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	[logOutput selectAll:self];
     [logOutput insertText:@"" replacementRange:logOutput.selectedRange];
     NSPasteboard *pboard = [sender draggingPasteboard];
-	
-	///////////////////////////////////
-	// This probably shouldn't be here
-	
-	//get the user defined index name
-	NSString * indexFileName = [[userDefaults values] valueForKey:@"WAEIndexName"];
-	if (indexFileName == nil || [indexFileName length] == 0) {
-		indexFileName = @"index.html";
-	}
 	
 	//get the user selected output type
 	//HACK alert. I need to figure out a better way to do this. I thought the User
@@ -113,53 +108,18 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	if (URLPrepend == nil || [URLPrepend length] == 0) {
 		URLPrepend = @"";
 	}
-	///////////////////////////////////
 	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         NSUInteger numberOfFiles = [files count];
 		//NSLog(@"%i\n", numberOfFiles);
-		NSUInteger i;
-		for (i=0; i<numberOfFiles; i++)
-		{
-			NSString* fileName = [files objectAtIndex:i];
-			
-			[self logInfo:[NSString stringWithFormat: NSLocalizedStringFromTable(@"processing", @"InfoPlist", @"processing file: 1 name"), fileName] ];
-			
-			if ([fileName hasSuffix:@"webarchive"])
-			{
-				NSFileManager * fm = [NSFileManager defaultManager];
-				NSString * dirPath = [fileName stringByDeletingLastPathComponent];
-				
-				if ([fm isWritableFileAtPath:dirPath])
-				{
-					NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
-					NSString * outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
-					
-					NSUInteger i = 0;
-					while([fm fileExistsAtPath:outputPath])
-					{
-						[self logWarning:[NSString stringWithFormat: NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath] ];
-						NSString * dirName = [archiveName stringByAppendingString:@"-%tu"];
-						outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
-					}
-					
-					Extractor * extr = [[Extractor alloc] init];
-					[extr loadWebArchive: fileName];
-					[extr setEntryFileName: indexFileName];
-					[extr setContentKind: type];
-					[extr setURLPrepend: URLPrepend];
-					NSString * mainResourcePath = [extr extractResources: outputPath];
-                    
-					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
-					
-				}
-			}
-			else
-			{
-				[self logError: NSLocalizedStringFromTable(@"not archive", @"InfoPlist", @"")];
-			}
-		}
+        NSUInteger i;
+        for (i=0; i<numberOfFiles; i++)
+        {
+            NSString* fileName = [files objectAtIndex:i];
+            Extractor * extr = [[Extractor alloc] init];
+            [extr extractAuto:fileName dropViewRef:self];
+        }
     }
     return YES;
 }
