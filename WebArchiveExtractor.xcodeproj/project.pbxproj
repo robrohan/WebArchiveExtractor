@@ -358,6 +358,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robrohan.WebArchiveExtractor;
 				PRODUCT_NAME = WebArchiveExtractor;
 				PROVISIONING_PROFILE = "";
@@ -387,6 +388,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robrohan.WebArchiveExtractor;
 				PRODUCT_NAME = WebArchiveExtractor;
 				PROVISIONING_PROFILE_SPECIFIER = "";
