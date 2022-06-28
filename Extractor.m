@@ -12,6 +12,7 @@
 
 #import "Extractor.h"
 
+
 static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexName)
 {
 	return [packagePath stringByAppendingPathComponent:indexName];
@@ -23,11 +24,106 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 {
 	self = [super init];
     if(self != nil) {
+        ///////////////////////////////////
+        // initialize properties with userDefaults settings
+        
+        //get the user defined index name
+        entryFileName = [[userDefaults values] valueForKey:@"WAEIndexName"];
+        if (entryFileName == nil || [entryFileName length] == 0) {
+            entryFileName = @"index.html";
+        }
+        
         //default to XHTML if there is nothing else
         contentKind = NSXMLDocumentXHTMLKind;
+        
+        //get the user selected output type
+        //HACK alert. I need to figure out a better way to do this. I thought the User
+        //types from the select box would get an object, but it only returns a string :-/
+        NSString * outputType = [[userDefaults values] valueForKey:@"WAEOutputType"];
+        NSXMLDocumentContentKind type = NSXMLDocumentXHTMLKind;
+        if ( [outputType isEqualToString:@"HTML"] ) {
+            type = NSXMLDocumentHTMLKind;
+        } else if ( [outputType isEqualToString:@"XML"] ) {
+            type = NSXMLDocumentXMLKind;
+        } else if ( [outputType isEqualToString:@"XHTML"] ) {
+            type = NSXMLDocumentXHTMLKind;
+        } else if ( [outputType isEqualToString:@"Text"] ) {
+            type = NSXMLDocumentTextKind;
+        }
+        
+        // get url prepend
+        NSString * URLPrepend = [[userDefaults values] valueForKey:@"WAEURLOffset"];
+        if (URLPrepend == nil || [URLPrepend length] == 0) {
+            URLPrepend = @"";
+        }
+        
+        // set default output path
+        outputPath = @"";
+        ///////////////////////////////////
+
     }
 	return self;
 }
+
+-(void) extractAuto:(NSString *)fileName
+        dropViewRef:(ArchiveDropView *)dropViewRef
+{
+    // If not running with gui, save relative to CWD
+    // Also make an ArchiveDropView for logging
+    NSString * dirPath = [fileName stringByDeletingLastPathComponent];
+    if (dropViewRef == nil) {
+        dirPath = @"./";
+        dropViewRef = [[ArchiveDropView alloc] init];
+    }
+    [dropViewRef logInfo:[NSString stringWithFormat: NSLocalizedStringFromTable(@"processing", @"InfoPlist", @"processing file: 1 name"), fileName] ];
+    
+
+    if ([fileName hasSuffix:@"webarchive"])
+    {
+        NSFileManager * fm = [NSFileManager defaultManager];
+        NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
+        
+        // return if not readable
+        if (![fm isReadableFileAtPath:fileName]) {
+            [dropViewRef logError:NSLocalizedStringFromTable(@"cannot read", @"InfoPlist", @"")];
+            return;
+        }
+        
+        if ([fm isWritableFileAtPath:dirPath])
+        {
+            // set output path to archiveName if empty
+            if ([outputPath isEqual: @""]) {
+                outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
+            }
+            
+            NSUInteger i = 0;
+            while([fm fileExistsAtPath:outputPath])
+            {
+                [dropViewRef logWarning:[NSString stringWithFormat: NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath]];
+                NSString * dirName = [archiveName stringByAppendingString:@"-%tu"];
+                outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
+            }
+            
+            [self loadWebArchive: fileName];
+            [self setURLPrepend: URLPrepend];
+            NSString * mainResourcePath = [self extractResources: outputPath];
+
+            if (mainResourcePath != nil) {
+                [dropViewRef logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
+            } else {
+                [dropViewRef logError:NSLocalizedStringFromTable(@"unknown", @"InfoPlist", @"")];
+            }
+            
+        } else {
+            [dropViewRef logError:NSLocalizedStringFromTable(@"cannot write", @"InfoPlist", @"")];
+        }
+    }
+    else
+    {
+        [dropViewRef logError:NSLocalizedStringFromTable(@"not archive", @"InfoPlist", @"")];
+    }
+}
+
 
 -(void) loadWebArchive:(NSString*) pathToWebArchive
 {
@@ -349,6 +445,11 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 - (NSXMLDocumentContentKind) contentKind
 {
 	return contentKind;
+}
+
+- (void) setOutputPath: (NSString*) path
+{
+    outputPath = path;
 }
 
 @end

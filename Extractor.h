@@ -12,6 +12,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import "ArchiveDropView.h"
 
 @interface Extractor : NSObject 
 {
@@ -29,7 +30,15 @@
 	NSXMLDocumentContentKind contentKind;
 	/** URL to add to the begining of the hrefs / srcs */
 	NSString * URLPrepend;
+    /** the directory in which to output contents. if length 0, use archiveName */
+    NSString * outputPath;
+    IBOutlet NSUserDefaultsController *userDefaults;    
 }
+
+/**
+ * all in one extraction operation from filename
+ */
+- (void) extractAuto:(NSString*) fileName dropViewRef: (ArchiveDropView*) dropViewRef;
 
 /**
  * load web archive file
@@ -74,5 +83,7 @@ added by Robert Covington to handle archives with subframeArchives
 
 - (void) setURLPrepend:(NSString *) url;
 - (NSString *) URLPrepend;
+
+- (void) setOutputPath:(NSString *) path;
 
 @end
