@@ -36,3 +36,4 @@ files:
 WebArchiveExtractor.0.2.zip  contains Application
 Automator-WebArchiveExtractorAction.0.2.action.zip  contains Automator Plugin
 
+.
