@@ -1,3 +1,30 @@
+
+## Building Help
+
+```
+cd WebArchiveExtractorHelp
+```
+
+```
+hiutil -I corespotlight -Caf WebArchiveExtractorHelp.cshelpindex -vv .
+```
+
+```
+hiutil -I lsm  -Caf WebArchiveExtractorHelp.helpindex -vv .
+```
+
+Verify:
+
+```
+hiutil -I corespotlight -Tvf WebArchiveExtractorHelp.cshelpindex
+```
+
+```
+mv WebArchiveExtractorHelp WebArchiveExtractorHelp.help
+```
+
+--- 
+
 NOTE: this file is from the original sourceforge code. There is no Automator code in this forked version
 
 Release notes

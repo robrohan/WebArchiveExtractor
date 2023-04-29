@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>WebArchiveExtractorHelp</string>
+	<string>WebArchiveExtractorHelp.help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>WebArchive Extractor Help</string>
 	<key>CFBundleIdentifier</key>
@@ -34,5 +34,7 @@
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>
 	<string>WebArchiveExtractor.sdef</string>
+	<key>CFBundleIconFile</key>
+	<string>WebArchiveExtractor.icns</string>
 </dict>
 </plist>
