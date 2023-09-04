@@ -40,6 +40,11 @@ WebArchiveExtractor website.webarchive -o out
 
 ## Build
 You *should* be able to automatically build and sign a release for local execution by running this command in the root of the project, even if you are not an Apple developer (assuming you've got the Xcode CLI tools):
+
+> Update: You need to do two things first:<br><br>
+> - Step 1. Download Xcode from the App Store (**Note: You don't have to run it, if you do it'll use up a bunch of disk space**)<br>
+> - Step 2. Run `xcodebuild -runFirstLaunch` in the Terminal
+
 ```sh
 xcodebuild -project WebArchiveExtractor.xcodeproj
 ```
