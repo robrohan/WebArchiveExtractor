@@ -36,8 +36,6 @@ Define explicit output directory:
 WebArchiveExtractor website.webarchive -o out
 ```
 
----
-
 ## Build
 You *should* be able to automatically build and sign a release for local execution by running this command in the root of the project, even if you are not an Apple developer (assuming you've got the Xcode CLI tools):
 

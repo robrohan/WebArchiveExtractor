@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.therohans.webarchiveextractor.help</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>WebArchive Extractor Help</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>WebArchiveExtractorHelp.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>WebArchive Extractor Help</string>
+	<key>HPDBookAccessPath</key>
+	<string>index.html</string>
+	<key>HPDBookIconPath</key>
+	<string>extractor.png</string>
+	<key>HPDBookIndexPath</key>
+	<string>WebArchiveExtractorHelp.helpindex</string>
+	<key>HPDBookCSIndexPath</key>
+	<string>WebArchiveExtractorHelp.cshelpindex</string>
+	<key>HPDBookKBProduct</key>
+	<string>WebArchiveExtractor</string>
+	<key>HPDBookTitle</key>
+	<string>WebArchive Extractor</string>
+	<key>HPDBookType</key>
+	<string>3</string>
+</dict>
+</plist>
