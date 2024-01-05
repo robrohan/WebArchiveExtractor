@@ -353,7 +353,11 @@
                 <outlet property="logWindow" destination="224" id="286"/>
             </connections>
         </customObject>
-        <customObject id="289" userLabel="SUUpdater" customClass="SUUpdater"/>
+        <customObject id="289" userLabel="SUUpdater" customClass="SUUpdater">
+            <connections>
+                <outlet property="userDefaults" destination="326" id="CK2-if-Zk4"/>
+            </connections>
+        </customObject>
         <window title="WebArchive Extractor Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="292" userLabel="Preferences" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -460,6 +464,10 @@
         </window>
         <userDefaultsController representsSharedInstance="YES" id="326" userLabel="Shared Defaults"/>
         <customObject id="382" userLabel="OutputTypeController" customClass="OutputTypeController"/>
-        <customObject id="432" userLabel="App Delegate" customClass="AppDelegate"/>
+        <customObject id="432" userLabel="App Delegate" customClass="AppDelegate">
+            <connections>
+                <outlet property="userDefaults" destination="326" id="Rm9-oW-SVx"/>
+            </connections>
+        </customObject>
     </objects>
 </document>
