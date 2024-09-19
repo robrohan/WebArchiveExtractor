@@ -1,3 +1,14 @@
+# WebArchive Extractor
+
+WebArchive Extractor is a MacOS application to help un-archive `.webarchive`
+files (like when saving from Safari).
+
+If you do not want to build the code yourself, you can grab a compiled
+[universal binary here](https://therohans.com/webarchiveextractor/).
+
+## Compiling
+
+You should be able to just checkout the code, open in Xcode, and click run.
 
 ## Building Help
 
@@ -14,7 +25,7 @@ hiutil -I lsm  -Caf WebArchiveExtractorHelp.helpindex -vv .
 ```
 
 Verify:
-
+
 ```
 hiutil -I corespotlight -Tvf WebArchiveExtractorHelp.cshelpindex
 ```
@@ -23,9 +34,10 @@ hiutil -I corespotlight -Tvf WebArchiveExtractorHelp.cshelpindex
 mv WebArchiveExtractorHelp WebArchiveExtractorHelp.help
 ```
 
---- 
+---
 
-NOTE: this file is from the original sourceforge code. There is no Automator code in this forked version
+NOTE: this file is from the original sourceforge code. There is no Automator 
+code in this forked version
 
 Release notes
 
