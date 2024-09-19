@@ -1,6 +1,6 @@
 ======================================================================
 Copyright 2006 Vitaly Davidenko (2006-10-12) Apple Public License
-Copyright 2007 Rob Rohan (2007-09-18)
+Copyright 2007-2024 Rob Rohan (2007-09-18)
 
 Icons Copyright:
 TITLE:	Crystal Project Icons
@@ -11,7 +11,7 @@ CONTACT: everaldo@everaldo.com
 Copyright (c) 2006-2007  Everaldo Coelho.
 http://everaldo.com/crystal/?action=license
 
-I also got some help from the great web site:
+I also got some help from the web site:
 http://cocoadevcentral.com/
 
 ======================================================================

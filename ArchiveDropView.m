@@ -16,7 +16,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	[log setEditable:YES];
 	
 	NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary: [log typingAttributes]];
-	[dict setValue:color forKey:NSForegroundColorAttributeName];
+	// [dict setValue:color forKey:NSForegroundColorAttributeName];
 	[log setTypingAttributes:dict];
     [log insertText: message replacementRange: [log selectedRange]];
     [log insertText: @"\n" replacementRange: [log selectedRange]];
