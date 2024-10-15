@@ -131,6 +131,13 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 				NSFileManager * fm = [NSFileManager defaultManager];
 				NSString * dirPath = [fileName stringByDeletingLastPathComponent];
 				
+                if (![dirPath hasSuffix:@"/"])
+                    dirPath = [dirPath stringByAppendingString:@"/"];
+                
+                [self logInfo:[NSString stringWithFormat: @"using %@ directory", dirPath] ];
+                
+                
+                
 				if ([fm isWritableFileAtPath:dirPath])
 				{
 					NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
@@ -154,6 +161,12 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 					[self logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
 					
 				}
+                else
+                {
+                    NSError *attributeserror = nil;
+                    NSDictionary *sourceAttributes = [fm attributesOfItemAtPath:dirPath error: &attributeserror];
+                    [self logInfo:[NSString stringWithFormat: @"%@ directory is not writable: %@ %@", dirPath, attributeserror, sourceAttributes] ];
+                }
 			}
 			else
 			{

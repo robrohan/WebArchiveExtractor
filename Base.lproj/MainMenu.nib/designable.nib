@@ -22,17 +22,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="215" height="181"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="214" customClass="ArchiveDropView">
-                        <rect key="frame" x="44" y="45" width="128" height="128"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="214" customClass="ArchiveDropView">
+                        <rect key="frame" x="44" y="45" width="127" height="128"/>
                         <connections>
                             <outlet property="logOutput" destination="227" id="281"/>
                             <outlet property="userDefaults" destination="326" id="337"/>
                         </connections>
                     </customView>
-                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="216">
-                        <rect key="frame" x="29" y="20" width="169" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="216">
+                        <rect key="frame" x="23" y="20" width="169" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="nFl-cC-OX9"/>
+                        </constraints>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Drop WebArchive Above" id="435">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.88586955999999994" green="0.88586955999999994" blue="0.88586955999999994" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,8 +41,17 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="216" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="25" id="2I7-ji-cwk"/>
+                    <constraint firstAttribute="bottom" secondItem="216" secondAttribute="bottom" constant="20" symbolic="YES" id="4YK-P9-x4T"/>
+                    <constraint firstAttribute="trailing" secondItem="216" secondAttribute="trailing" constant="25" id="DyR-E2-epA"/>
+                    <constraint firstItem="214" firstAttribute="centerX" secondItem="2" secondAttribute="centerX" id="Kp8-Pl-Bo0"/>
+                    <constraint firstItem="216" firstAttribute="top" secondItem="214" secondAttribute="bottom" constant="8" symbolic="YES" id="fh5-ms-WQe"/>
+                    <constraint firstItem="214" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="44" id="rLl-Rd-VvP"/>
+                    <constraint firstItem="214" firstAttribute="top" secondItem="2" secondAttribute="top" constant="8" id="rgo-IX-0ga"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="123" y="-42"/>
+            <point key="canvasLocation" x="523" y="47"/>
         </window>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
@@ -317,9 +327,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="482" height="264"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="226">
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="226">
                         <rect key="frame" x="0.0" y="0.0" width="482" height="264"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="SHo-ID-lsF">
                             <rect key="frame" x="1" y="1" width="480" height="262"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -345,6 +354,12 @@
                         </scroller>
                     </scrollView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="226" firstAttribute="leading" secondItem="225" secondAttribute="leading" id="3N0-5E-tMM"/>
+                    <constraint firstItem="226" firstAttribute="centerX" secondItem="225" secondAttribute="centerX" id="egV-Aa-Qbn"/>
+                    <constraint firstItem="226" firstAttribute="top" secondItem="225" secondAttribute="top" id="jWH-Mb-Abg"/>
+                    <constraint firstItem="226" firstAttribute="centerY" secondItem="225" secondAttribute="centerY" id="spu-LF-OeQ"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="140" y="-20"/>
         </window>
@@ -365,9 +380,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="346" height="164"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="294">
+                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="294">
                         <rect key="frame" x="-12" y="10" width="366" height="151"/>
-                        <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="297">
@@ -375,18 +389,22 @@
                                     <rect key="frame" x="10" y="33" width="346" height="105"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="299">
-                                            <rect key="frame" x="48" y="75" width="74" height="17"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="299">
+                                            <rect key="frame" x="48" y="76" width="74" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="ZdA-P7-tyc"/>
+                                            </constraints>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Index file:" id="437">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField toolTip="Extracted file name" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="300">
-                                            <rect key="frame" x="121" y="73" width="124" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <textField toolTip="Extracted file name" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="300">
+                                            <rect key="frame" x="121" y="74" width="123" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="123" id="jW1-eU-txv"/>
+                                            </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="index.html" placeholderString="index.html" drawsBackground="YES" id="438">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -400,9 +418,8 @@
                                                 </binding>
                                             </connections>
                                         </textField>
-                                        <popUpButton toolTip="Index file output type" imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="342">
-                                            <rect key="frame" x="118" y="41" width="130" height="26"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <popUpButton toolTip="Index file output type" imageHugsTitle="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="342">
+                                            <rect key="frame" x="118" y="42" width="130" height="26"/>
                                             <popUpButtonCell key="cell" type="push" title="XML" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="344" id="439">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -420,27 +437,24 @@
                                                 <binding destination="326" name="selectedValue" keyPath="values.WAEOutputType" previousBinding="391" id="396"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="347">
-                                            <rect key="frame" x="31" y="47" width="91" height="17"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="347">
+                                            <rect key="frame" x="31" y="48" width="91" height="17"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Output type:" id="440">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="397">
-                                            <rect key="frame" x="45" y="16" width="77" height="17"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="397">
+                                            <rect key="frame" x="45" y="17" width="71" height="17"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Asset URL:" id="441">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField toolTip="URL to add before page asset file names" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="398">
-                                            <rect key="frame" x="121" y="13" width="208" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <textField toolTip="URL to add before page asset file names" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="398">
+                                            <rect key="frame" x="121" y="15" width="208" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://robrohan.com/images/" drawsBackground="YES" id="442">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -451,11 +465,41 @@
                                             </connections>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="398" firstAttribute="top" secondItem="342" secondAttribute="bottom" constant="10" id="1J8-iC-964"/>
+                                        <constraint firstItem="347" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="397" secondAttribute="trailing" id="37a-06-nQZ"/>
+                                        <constraint firstItem="347" firstAttribute="top" secondItem="299" secondAttribute="bottom" constant="11" id="3SP-le-6Fj"/>
+                                        <constraint firstItem="300" firstAttribute="leading" secondItem="342" secondAttribute="leading" id="9yr-WC-S9r"/>
+                                        <constraint firstItem="397" firstAttribute="leading" secondItem="298" secondAttribute="leading" constant="47" id="AJJ-Mn-UbE"/>
+                                        <constraint firstItem="300" firstAttribute="trailing" secondItem="342" secondAttribute="trailing" id="DkP-OH-9uA"/>
+                                        <constraint firstItem="397" firstAttribute="firstBaseline" secondItem="398" secondAttribute="firstBaseline" id="Ew8-mT-8wG"/>
+                                        <constraint firstItem="300" firstAttribute="leading" secondItem="299" secondAttribute="trailing" constant="1" id="Jae-gU-Wde"/>
+                                        <constraint firstAttribute="bottom" secondItem="397" secondAttribute="bottom" constant="17" id="MrQ-lA-tkC"/>
+                                        <constraint firstItem="299" firstAttribute="leading" secondItem="298" secondAttribute="leading" constant="50" id="QJD-2e-C55"/>
+                                        <constraint firstAttribute="trailing" secondItem="398" secondAttribute="trailing" constant="17" id="Qn1-vG-qTh"/>
+                                        <constraint firstItem="299" firstAttribute="centerY" secondItem="300" secondAttribute="centerY" id="Rj5-45-fMS"/>
+                                        <constraint firstItem="397" firstAttribute="centerY" secondItem="398" secondAttribute="centerY" id="V5r-uz-Nj4"/>
+                                        <constraint firstItem="347" firstAttribute="leading" secondItem="298" secondAttribute="leading" constant="33" id="WFJ-z2-smz"/>
+                                        <constraint firstItem="300" firstAttribute="baseline" secondItem="299" secondAttribute="firstBaseline" id="Z5U-Rr-mrN"/>
+                                        <constraint firstItem="342" firstAttribute="top" secondItem="300" secondAttribute="bottom" constant="7" id="eD7-HI-NaP"/>
+                                        <constraint firstItem="398" firstAttribute="baseline" secondItem="397" secondAttribute="firstBaseline" id="hfS-w4-Tyt"/>
+                                        <constraint firstItem="347" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="299" secondAttribute="trailing" id="qWd-nb-VOJ"/>
+                                        <constraint firstItem="299" firstAttribute="firstBaseline" secondItem="300" secondAttribute="firstBaseline" id="ulR-4y-pCn"/>
+                                        <constraint firstItem="347" firstAttribute="firstBaseline" secondItem="342" secondAttribute="baseline" id="vAU-6r-rI6"/>
+                                        <constraint firstItem="342" firstAttribute="leading" secondItem="398" secondAttribute="leading" id="vfg-VP-vvH"/>
+                                        <constraint firstItem="347" firstAttribute="centerY" secondItem="342" secondAttribute="centerY" id="yri-sl-GN2"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="294" secondAttribute="bottom" constant="20" symbolic="YES" id="9xt-Ea-WRm"/>
+                    <constraint firstItem="294" firstAttribute="leading" secondItem="293" secondAttribute="leading" constant="-5" id="IDe-Eo-qAZ"/>
+                    <constraint firstAttribute="trailing" secondItem="294" secondAttribute="trailing" constant="-1" id="Kwk-UD-YYt"/>
+                    <constraint firstItem="294" firstAttribute="top" secondItem="293" secondAttribute="top" constant="9" id="rjZ-Rp-VCO"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="137" y="-487"/>
         </window>
