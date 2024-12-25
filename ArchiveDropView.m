@@ -30,8 +30,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 {
 	if ((self = [super initWithFrame:frameRect]) != nil) {
 		// Add initialization code here
-		[self registerForDraggedTypes:[NSArray arrayWithObjects: NSFilenamesPboardType, nil]];
-		
+        [self registerForDraggedTypes:[NSArray arrayWithObjects: NSPasteboardTypeFileURL, nil]];
 		//set the drop target image
 		NSImage *newImage = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForImageResource: @"extract_archive.png"]];
 		[self setImage:newImage];
@@ -115,15 +114,36 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	}
 	///////////////////////////////////
 	
-    if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
-        NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-        NSUInteger numberOfFiles = [files count];
-		//NSLog(@"%i\n", numberOfFiles);
+    // Prompt the user to choose a directory for saving files
+    NSURL *selectedDirectoryURL = [self selectDirectory];
+    if (!selectedDirectoryURL) {
+        // No directory was selected
+        return NO;
+    }
+
+    if ( [[pboard types] containsObject:NSPasteboardTypeFileURL]) {
+        // This used to just return an array, now it can return an array
+        // or an NSString. It's always cool when functions can return different types
+        id pasteboardContent = [pboard propertyListForType:NSPasteboardTypeFileURL];
+        NSArray *urls = nil;
+        if ([pasteboardContent isKindOfClass:[NSArray class]]) {
+            urls = pasteboardContent;
+        } else if ([pasteboardContent isKindOfClass:[NSString class]]) {
+            urls = @[pasteboardContent];
+        }
+        NSUInteger numberOfFiles = [urls count];
+        //NSLog(@"%i\n", numberOfFiles);
 		NSUInteger i;
 		for (i=0; i<numberOfFiles; i++)
 		{
-			NSString* fileName = [files objectAtIndex:i];
-			
+            NSString *filePath = [urls objectAtIndex:i];
+            NSURL *fileURL = [NSURL URLWithString:filePath];
+            // Sandboxing can make the URLs look nuts. Try to un-messup the URLS
+            if ([filePath hasPrefix:@"file:///.file"]) {
+                // Resolve the special URL to a real path
+                fileURL = [fileURL URLByResolvingSymlinksInPath];
+            }
+            NSString *fileName = [fileURL path];
 			[self logInfo:[NSString stringWithFormat: NSLocalizedStringFromTable(@"processing", @"InfoPlist", @"processing file: 1 name"), fileName] ];
 			
 			if ([fileName hasSuffix:@"webarchive"])
@@ -136,13 +156,16 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
                 
                 [self logInfo:[NSString stringWithFormat: @"using %@ directory", dirPath] ];
                 
-                
-                
 				if ([fm isWritableFileAtPath:dirPath])
 				{
 					NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
-					NSString * outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
+					// NSString * outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
 					
+                    // Instead of using the original directory, use the user-selected directory
+                    NSString * outputPath = [selectedDirectoryURL.path stringByAppendingPathComponent:[fileName lastPathComponent]];
+                    outputPath = [outputPath stringByDeletingPathExtension]; // Remove file extension
+                    outputPath = [outputPath stringByAppendingPathExtension:@"output"];  // Optional, change this as needed
+
 					NSUInteger i = 0;
 					while([fm fileExistsAtPath:outputPath])
 					{
@@ -177,22 +200,26 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     return YES;
 }
 
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender 
+- (NSURL *)selectDirectory {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setCanChooseFiles:NO];
+    [openPanel setCanChooseDirectories:YES];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setTitle:@"Select an Extraction Directory"];
+    [NSApp activateIgnoringOtherApps:YES];
+    // Show the panel and check if the user selected a directory
+    if ([openPanel runModal] == NSModalResponseOK) {
+        return [openPanel URL];
+    }
+    return nil;
+}
+
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
     NSPasteboard *pboard;
-    // NSDragOperation sourceDragMask;
-	
-    // sourceDragMask = [sender draggingSourceOperationMask];
     pboard = [sender draggingPasteboard];
 	
-    if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
-		/*
-		 if (sourceDragMask & NSDragOperationLink) {
-			 return NSDragOperationLink;
-		 } else if (sourceDragMask & NSDragOperationCopy) {
-			 return NSDragOperationCopy;
-		 }
-		 */
+    if ([[pboard types] containsObject:NSPasteboardTypeFileURL]) {
 		return NSDragOperationCopy;
     }
     return NSDragOperationNone;

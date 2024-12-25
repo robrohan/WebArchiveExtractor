@@ -51,7 +51,7 @@
                     <constraint firstItem="214" firstAttribute="top" secondItem="2" secondAttribute="top" constant="8" id="rgo-IX-0ga"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="523" y="47"/>
+            <point key="canvasLocation" x="549" y="22"/>
         </window>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
