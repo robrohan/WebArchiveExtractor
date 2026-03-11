@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 {
     char * iN = findInputArg(argc, argv);
     char * oN = findOutputArg(argc, argv);
+    
     if (iN != nil) {
         NSString *fileName = [NSString stringWithCString:iN encoding:NSASCIIStringEncoding];
         Extractor * extr = [[Extractor alloc] init];
@@ -58,6 +59,5 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-    return NSApplicationMain(argc,  (const char **) argv);
+    return NSApplicationMain(argc, (const char **) argv);
 }
-

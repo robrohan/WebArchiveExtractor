@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,13 +17,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="340" y="502" width="215" height="181"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1050"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="215" height="181"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="214" customClass="ArchiveDropView">
+                    <customView autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="214" customClass="ArchiveDropView">
                         <rect key="frame" x="44" y="45" width="127" height="128"/>
                         <connections>
                             <outlet property="logOutput" destination="227" id="281"/>
@@ -51,7 +52,7 @@
                     <constraint firstItem="214" firstAttribute="top" secondItem="2" secondAttribute="top" constant="8" id="rgo-IX-0ga"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="549" y="22"/>
+            <point key="canvasLocation" x="548.5" y="21.5"/>
         </window>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
@@ -64,21 +65,13 @@
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Check For Updates..." id="290">
-                                <connections>
-                                    <action selector="checkForUpdates:" target="289" id="291"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="196">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Preferences…" keyEquivalent="," id="129">
+                            <menuItem title="Settings…" keyEquivalent="," id="129">
                                 <connections>
                                     <action selector="makeKeyAndOrderFront:" target="292" id="324"/>
                                 </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="143">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Services" id="131">
                                 <menu key="submenu" title="Services" systemMenu="services" id="130"/>
@@ -310,7 +303,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="111" y="494"/>
+            <point key="canvasLocation" x="297" y="-155"/>
         </menu>
         <customObject id="208" userLabel="WebArchiveController" customClass="WebArchiveController">
             <connections>
@@ -321,7 +314,7 @@
             <windowStyleMask key="styleMask" titled="YES" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="38" y="586" width="482" height="264"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1050"/>
             <value key="minSize" type="size" width="213" height="110"/>
             <view key="contentView" id="225">
                 <rect key="frame" x="0.0" y="0.0" width="482" height="264"/>
@@ -330,15 +323,15 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="226">
                         <rect key="frame" x="0.0" y="0.0" width="482" height="264"/>
                         <clipView key="contentView" drawsBackground="NO" id="SHo-ID-lsF">
-                            <rect key="frame" x="1" y="1" width="480" height="262"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <rect key="frame" x="1" y="1" width="463" height="262"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="227">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="262"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="463" height="262"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="480" height="262"/>
+                                    <size key="minSize" width="463" height="262"/>
                                     <size key="maxSize" width="482" height="10000000"/>
                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -349,7 +342,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="443">
-                            <rect key="frame" x="465" y="1" width="16" height="262"/>
+                            <rect key="frame" x="464" y="1" width="17" height="262"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -361,7 +354,7 @@
                     <constraint firstItem="226" firstAttribute="centerY" secondItem="225" secondAttribute="centerY" id="spu-LF-OeQ"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="140" y="-20"/>
+            <point key="canvasLocation" x="137" y="63"/>
         </window>
         <customObject id="285" userLabel="MenuDelegate" customClass="MenuDelegate">
             <connections>
@@ -374,11 +367,11 @@
                 <outlet property="userDefaults" destination="326" id="CK2-if-Zk4"/>
             </connections>
         </customObject>
-        <window title="WebArchive Extractor Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="292" userLabel="Preferences" customClass="NSPanel">
+        <window title="WebArchive Extractor Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="292" userLabel="Preferences" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="147" y="604" width="346" height="164"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1050"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="293">
                 <rect key="frame" x="0.0" y="0.0" width="346" height="164"/>
@@ -394,7 +387,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="299">
-                                            <rect key="frame" x="48" y="76" width="74" height="17"/>
+                                            <rect key="frame" x="48" y="78" width="74" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="ZdA-P7-tyc"/>
                                             </constraints>
@@ -405,7 +398,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Extracted file name" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="300">
-                                            <rect key="frame" x="121" y="74" width="123" height="21"/>
+                                            <rect key="frame" x="121" y="74" width="123" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="123" id="jW1-eU-txv"/>
                                             </constraints>
@@ -423,7 +416,7 @@
                                             </connections>
                                         </textField>
                                         <popUpButton toolTip="Index file output type" imageHugsTitle="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="342">
-                                            <rect key="frame" x="118" y="42" width="130" height="26"/>
+                                            <rect key="frame" x="121" y="47" width="123" height="20"/>
                                             <popUpButtonCell key="cell" type="push" title="XML" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="344" id="439">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="message"/>
@@ -442,7 +435,7 @@
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="347">
-                                            <rect key="frame" x="31" y="48" width="91" height="17"/>
+                                            <rect key="frame" x="31" y="47" width="91" height="20"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Output type:" id="440">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -450,7 +443,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="397">
-                                            <rect key="frame" x="45" y="17" width="71" height="17"/>
+                                            <rect key="frame" x="45" y="17" width="71" height="16"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Asset URL:" id="441">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -458,7 +451,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="URL to add before page asset file names" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="398">
-                                            <rect key="frame" x="121" y="15" width="208" height="21"/>
+                                            <rect key="frame" x="121" y="13" width="208" height="24"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://robrohan.com/images/" drawsBackground="YES" id="442">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -505,7 +498,7 @@
                     <constraint firstItem="294" firstAttribute="top" secondItem="293" secondAttribute="top" constant="9" id="rjZ-Rp-VCO"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="137" y="-487"/>
+            <point key="canvasLocation" x="614" y="286"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="326" userLabel="Shared Defaults"/>
         <customObject id="382" userLabel="OutputTypeController" customClass="OutputTypeController"/>

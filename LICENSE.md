@@ -1,6 +1,6 @@
 ======================================================================
 Copyright 2006 Vitaly Davidenko (2006-10-12) Apple Public License
-Copyright 2007-2024 Rob Rohan (2007-09-18)
+Copyright 2007-2026 Rob Rohan (2007-09-18)
 
 Icons Copyright:
 TITLE:	Crystal Project Icons
