@@ -71,57 +71,61 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
     // If not running with gui, save relative to CWD
     // Also make an ArchiveDropView for logging
     NSString * dirPath = [fileName stringByDeletingLastPathComponent];
+    
     if (dropViewRef == nil) {
         dirPath = @"./";
         dropViewRef = [[ArchiveDropView alloc] init];
     }
-    [dropViewRef logInfo:[NSString stringWithFormat: NSLocalizedStringFromTable(@"processing", @"InfoPlist", @"processing file: 1 name"), fileName] ];
+    [dropViewRef logInfo:[NSString stringWithFormat:
+                          NSLocalizedStringFromTable(@"processing", @"InfoPlist", @"processing file: 1 name"), fileName] ];
     
-
-    if ([fileName hasSuffix:@"webarchive"])
-    {
-        NSFileManager * fm = [NSFileManager defaultManager];
-        NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
-        
-        // return if not readable
-        if (![fm isReadableFileAtPath:fileName]) {
-            [dropViewRef logError:NSLocalizedStringFromTable(@"cannot read", @"InfoPlist", @"")];
-            return;
-        }
-        
-        if ([fm isWritableFileAtPath:dirPath])
-        {
-            // set output path to archiveName if empty
-            if ([outputPath isEqual: @""]) {
-                outputPath  =  [dirPath stringByAppendingPathComponent: archiveName];
-            }
-            
-            NSUInteger i = 0;
-            while([fm fileExistsAtPath:outputPath])
-            {
-                [dropViewRef logWarning:[NSString stringWithFormat: NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath]];
-                NSString * dirName = [archiveName stringByAppendingString:@"-%tu"];
-                outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
-            }
-            
-            [self loadWebArchive: fileName];
-            [self setURLPrepend: URLPrepend];
-            NSString * mainResourcePath = [self extractResources: outputPath];
-
-            if (mainResourcePath != nil) {
-                [dropViewRef logResult:[NSString stringWithFormat: NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
-            } else {
-                [dropViewRef logError:NSLocalizedStringFromTable(@"unknown", @"InfoPlist", @"")];
-            }
-            
-        } else {
-            [dropViewRef logError:NSLocalizedStringFromTable(@"cannot write", @"InfoPlist", @"")];
-        }
-    }
-    else
+    if (![fileName hasSuffix:@"webarchive"])
     {
         [dropViewRef logError:NSLocalizedStringFromTable(@"not archive", @"InfoPlist", @"")];
+        return;
     }
+    
+    NSFileManager * fm = [NSFileManager defaultManager];
+    NSString * archiveName = [[fileName lastPathComponent] stringByDeletingPathExtension];
+    
+    // return if not readable
+    if (![fm isReadableFileAtPath:fileName]) {
+        [dropViewRef logError:NSLocalizedStringFromTable(@"cannot read", @"InfoPlist", @"")];
+        return;
+    }
+    
+    if (![fm isWritableFileAtPath:dirPath])
+    {
+        [dropViewRef logError:NSLocalizedStringFromTable(@"cannot write", @"InfoPlist", @"")];
+        return;
+    }
+        
+    // set output path to archiveName if empty
+    if ([outputPath isEqual: @""]) {
+        outputPath = [dirPath stringByAppendingPathComponent: archiveName];
+    }
+    
+    NSUInteger i = 0;
+    while([fm fileExistsAtPath:outputPath])
+    {
+        [dropViewRef logWarning:[NSString stringWithFormat:
+                                 NSLocalizedStringFromTable(@"folder exists", @"InfoPlist", @"folder already exists: 1 name"), outputPath]];
+        NSString * dirName = [archiveName stringByAppendingString:@"-%tu"];
+        outputPath  = [dirPath stringByAppendingPathComponent: [NSString stringWithFormat: dirName, i++]];
+    }
+    
+    [self loadWebArchive: fileName];
+    [self setURLPrepend: URLPrepend];
+    NSString * mainResourcePath = [self extractResources: outputPath];
+
+    if (mainResourcePath == nil)
+    {
+        [dropViewRef logError:NSLocalizedStringFromTable(@"unknown", @"InfoPlist", @"")];
+        return;
+    }
+    
+    [dropViewRef logResult:[NSString stringWithFormat:
+                            NSLocalizedStringFromTable(@"extract success", @"InfoPlist", @"extract success 1=folder name 2=main file"), outputPath, mainResourcePath]];
 }
 
 

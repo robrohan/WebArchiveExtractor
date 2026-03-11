@@ -44,7 +44,15 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 	NSRect ourBounds = [self bounds];
     NSImage *image = [self image];
     [super drawRect:rect];
-    [image drawAtPoint:(ourBounds.origin) fromRect:rect operation:NSCompositingOperationSourceOver fraction:1];
+    
+    NSPoint centeredOrigin = NSMakePoint(
+        ourBounds.origin.x + (ourBounds.size.width - image.size.width)  / 2.0,
+        ourBounds.origin.y + (ourBounds.size.height - image.size.height) / 2.0
+    );
+    [image drawAtPoint:centeredOrigin
+              fromRect:NSZeroRect
+             operation:NSCompositingOperationSourceOver
+              fraction:1.0];
 }
 
 - (void)setImage:(NSImage *)newImage
@@ -57,31 +65,31 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     return _dropImage;
 }
 
-////////////////////////////////////////////////////////////////
 
 - (void)logError:(NSString*) message
 {
-    printf("\x1b[1;91m%s\x1b[0m\n", message.UTF8String);
+    printf("%s\n", message.UTF8String);
 	logMessage(logOutput, [NSColor redColor], message);
 }
 
 - (void)logWarning:(NSString*) message
 {
-    printf("\x1b[33m%s\x1b[0m\n", message.UTF8String);
+    printf("%s\n", message.UTF8String);
 	logMessage(logOutput, [NSColor orangeColor], message);
 }
 
 - (void)logInfo:(NSString*) message
 {
-    printf("\x1b[34m%s\x1b[0m\n", message.UTF8String);
+    printf("%s\n", message.UTF8String);
 	logMessage(logOutput, [NSColor blueColor], message);
 }
 
 - (void)logResult:(NSString*) message
 {
-    printf("\x1b[1;32m%s\x1b[0m\n", message.UTF8String);
+    printf("%s\n", message.UTF8String);
 	logMessage(logOutput, [NSColor darkGrayColor], message);
 }
+
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
@@ -112,7 +120,7 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         NSUInteger numberOfFiles = [files count];
-		//NSLog(@"%i\n", numberOfFiles);
+        
         NSUInteger i;
         for (i=0; i<numberOfFiles; i++)
         {
@@ -127,19 +135,9 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender 
 {
     NSPasteboard *pboard;
-    // NSDragOperation sourceDragMask;
-	
-    // sourceDragMask = [sender draggingSourceOperationMask];
     pboard = [sender draggingPasteboard];
 	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
-		/*
-		 if (sourceDragMask & NSDragOperationLink) {
-			 return NSDragOperationLink;
-		 } else if (sourceDragMask & NSDragOperationCopy) {
-			 return NSDragOperationCopy;
-		 }
-		 */
 		return NSDragOperationCopy;
     }
     return NSDragOperationNone;
@@ -160,7 +158,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
 
 - (void)concludeDragOperation:(id <NSDraggingInfo>)sender
 {
-	//[self setNeedsDisplay:YES];
 }
 
 @end
