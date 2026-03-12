@@ -68,8 +68,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 -(void) extractAuto:(NSString *)fileName
         dropViewRef:(ArchiveDropView *)dropViewRef
 {
-    // If not running with gui, save relative to CWD
-    // Also make an ArchiveDropView for logging
     NSString * dirPath = [fileName stringByDeletingLastPathComponent];
     
     if (dropViewRef == nil) {
@@ -111,10 +109,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
         dirPath = outputPath;
     }
     
-    // 2
-    printf("URL: '%s' Type: '%d' Output: '%s'\n",
-           urlPrepend.UTF8String, contentKind, outputPath.UTF8String);
-    
     NSUInteger i = 0;
     while([fm fileExistsAtPath:outputPath])
     {
@@ -125,7 +119,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
     }
     
     [self loadWebArchive: fileName];
-    // [self setURLPrepend: urlPrepend];
     NSString * mainResourcePath = [self extractResources: outputPath];
 
     if (mainResourcePath == nil)
