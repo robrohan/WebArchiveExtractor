@@ -29,7 +29,7 @@
 	/** what kind of file to create (XML, XHTML, etc) */
 	NSXMLDocumentContentKind contentKind;
 	/** URL to add to the begining of the hrefs / srcs */
-	NSString * URLPrepend;
+	NSString * urlPrepend;
     /** the directory in which to output contents. if length 0, use archiveName */
     NSString * outputPath;
     IBOutlet NSUserDefaultsController *userDefaults;    

@@ -97,26 +97,6 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     [logOutput insertText:@"" replacementRange:logOutput.selectedRange];
     NSPasteboard *pboard = [sender draggingPasteboard];
 	
-	//get the user selected output type
-	//HACK alert. I need to figure out a better way to do this. I thought the User
-	//types from the select box would get an object, but it only returns a string :-/
-	NSString * outputType = [[userDefaults values] valueForKey:@"WAEOutputType"];
-	NSXMLDocumentContentKind type = NSXMLDocumentXHTMLKind;
-	if ( [outputType isEqualToString:@"HTML"] ) {
-		type = NSXMLDocumentHTMLKind;
-	} else if ( [outputType isEqualToString:@"XML"] ) {
-		type = NSXMLDocumentXMLKind;
-	} else if ( [outputType isEqualToString:@"XHTML"] ) {
-		type = NSXMLDocumentXHTMLKind;
-	} else if ( [outputType isEqualToString:@"Text"] ) {
-		type = NSXMLDocumentTextKind;
-	}
-	
-	NSString * URLPrepend = [[userDefaults values] valueForKey:@"WAEURLOffset"];
-	if (URLPrepend == nil || [URLPrepend length] == 0) {
-		URLPrepend = @"";
-	}
-	
     if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         NSUInteger numberOfFiles = [files count];

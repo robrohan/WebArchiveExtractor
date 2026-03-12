@@ -30,9 +30,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
             entryFileName = @"index.html";
         }
         
-        //default to XHTML if there is nothing else
-        contentKind = NSXMLDocumentHTMLKind;
-        
         //get the user selected output type
         //HACK alert. I need to figure out a better way to do this. I thought the User
         //types from the select box would get an object, but it only returns a string :-/
@@ -50,18 +47,20 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
             type = NSXMLDocumentXHTMLKind;
         } else if ( [outputType isEqualToString:@"Text"] ) {
             type = NSXMLDocumentTextKind;
+        } else {
+            type = NSXMLDocumentHTMLKind;
         }
+        //default to XHTML if there is nothing else
+        contentKind = type;
         
         // get url prepend
-        NSString * URLPrepend = [[userDefaults values] valueForKey:@"WAEURLOffset"];
-        if (URLPrepend == nil || [URLPrepend length] == 0) {
-            URLPrepend = @"";
+        NSString * prepend = [[userDefaults values] valueForKey:@"WAEURLOffset"];
+        if (prepend == nil || [prepend length] == 0) {
+            urlPrepend = @"";
         }
         
         // set default output path
         outputPath = @"";
-        
-        printf("URL: '%s' Type: '%s' Output: '%s'\n", URLPrepend.UTF8String, outputType.UTF8String, outputPath.UTF8String);
     }
 	return self;
 }
@@ -100,8 +99,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
         return;
     }
     
-    printf("Output: '%s'\n", outputPath.UTF8String);
-    
     // set output path to archiveName if empty
     if ([outputPath isEqual: @""])
     {
@@ -114,7 +111,9 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
         dirPath = outputPath;
     }
     
-    printf("Output: '%s'\n", outputPath.UTF8String);
+    // 2
+    printf("URL: '%s' Type: '%d' Output: '%s'\n",
+           urlPrepend.UTF8String, contentKind, outputPath.UTF8String);
     
     NSUInteger i = 0;
     while([fm fileExistsAtPath:outputPath])
@@ -126,7 +125,7 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
     }
     
     [self loadWebArchive: fileName];
-    [self setURLPrepend: URLPrepend];
+    // [self setURLPrepend: urlPrepend];
     NSString * mainResourcePath = [self extractResources: outputPath];
 
     if (mainResourcePath == nil)
@@ -444,12 +443,12 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 
 - (void) setURLPrepend:(NSString *) url
 {
-    URLPrepend = [url copy];
+    urlPrepend = [url copy];
 }
 
 - (NSString *) URLPrepend
 {
-	return URLPrepend;
+	return urlPrepend;
 }
 
 - (void) setContentKind:(NSXMLDocumentContentKind) kind
