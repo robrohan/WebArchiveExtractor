@@ -16,7 +16,22 @@ You can also run the same executable from from the command line:
 
 Running with no arguments will just launch the GUI.
 
-> An ancestor of this project supported Automator Actions at one point. This project does not have this functionality. Use the CLI for programmatic access.
+## Claude Code Skill
+
+This repo includes a Claude Code skill that lets you extract `.webarchive` files by just asking Claude naturally (e.g. "extract this webarchive file").
+
+![Claude Example](./docs/claude.png)
+
+### Installing the Skill
+
+Copy the skill into your Claude Code skills directory:
+
+```sh
+mkdir -p ~/.claude/skills/webarchive
+cp skills/webarchive/SKILL.md ~/.claude/skills/webarchive/SKILL.md
+```
+
+Once installed, Claude Code will recognize requests to extract `.webarchive` files and use WebArchiveExtractor automatically. The skill requires the app to be installed at `/Applications/WebArchiveExtractor.app` (see [Build](#build) below).
 
 ## CLI Usage
 
@@ -42,22 +57,6 @@ WebArchiveExtractor website.webarchive -o out
 
 ---
 
-## Claude Code Skill
-
-This repo includes a Claude Code skill that lets you extract `.webarchive` files by just asking Claude naturally (e.g. "extract this webarchive file").
-
-### Installing the Skill
-
-Copy the skill into your Claude Code skills directory:
-
-```sh
-mkdir -p ~/.claude/skills/webarchive
-cp skills/webarchive/SKILL.md ~/.claude/skills/webarchive/SKILL.md
-```
-
-Once installed, Claude Code will recognize requests to extract `.webarchive` files and use WebArchiveExtractor automatically. The skill requires the app to be installed at `/Applications/WebArchiveExtractor.app` (see [Build](#build) below).
-
----
 
 ## Build
 
