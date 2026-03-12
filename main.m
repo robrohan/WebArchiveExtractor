@@ -48,14 +48,16 @@ int main(int argc, char *argv[])
     int opt;
     NSString *fileName = nil;
     NSString *dirName = nil;
+    NSString *url = nil;
     
-    while ((opt = getopt(argc, (char * const *)argv, "hi:o:")) != -1) {
+    while ((opt = getopt(argc, (char * const *)argv, "ho:p:i:")) != -1) {
         switch (opt) {
             case 'h':
-                printf("Usage: %s [-h] [-i WebArchiveFile] [-o OuputDirectory]\n", argv[0]);
+                printf("Usage: %s [-h] [-o <OuputDirectory>] [-p <URLPrepend>] -i <WebArchiveFile> \n", argv[0]);
                 printf("  -h                 Show this help message\n");
                 printf("  -i WebArchiveFile  The WebArchive (.webarchive) file\n");
-                printf("  -o OuputDirectory  The directory to output extracted data\n");
+                printf("  -o OuputDirectory  The directory to output extracted data (optional)\n");
+                printf("  -p URLPrepend      URI to add to the front of the assets (optional)\n");
                 exit(0);
 
             case 'i':
@@ -64,6 +66,10 @@ int main(int argc, char *argv[])
 
             case 'o':
                 dirName = [NSString stringWithUTF8String:optarg];
+                break;
+                
+            case 'p':
+                url = [NSString stringWithUTF8String:optarg];
                 break;
 
             case '?':
@@ -79,6 +85,10 @@ int main(int argc, char *argv[])
         if(dirName != nil)
         {
             [extr setOutputPath:dirName];
+        }
+        if(url != nil)
+        {
+            [extr setURLPrepend:url];
         }
         [extr extractAuto:fileName dropViewRef:nil];
         exit(0);
