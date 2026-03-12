@@ -42,6 +42,23 @@ WebArchiveExtractor website.webarchive -o out
 
 ---
 
+## Claude Code Skill
+
+This repo includes a Claude Code skill that lets you extract `.webarchive` files by just asking Claude naturally (e.g. "extract this webarchive file").
+
+### Installing the Skill
+
+Copy the skill into your Claude Code skills directory:
+
+```sh
+mkdir -p ~/.claude/skills/webarchive
+cp skills/webarchive/SKILL.md ~/.claude/skills/webarchive/SKILL.md
+```
+
+Once installed, Claude Code will recognize requests to extract `.webarchive` files and use WebArchiveExtractor automatically. The skill requires the app to be installed at `/Applications/WebArchiveExtractor.app` (see [Build](#build) below).
+
+---
+
 ## Build
 
 You *should* be able to automatically build and sign a release for local execution by running this command in the root of the project, even if you are not an Apple developer (assuming you've got the Xcode CLI tools):
