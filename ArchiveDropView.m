@@ -97,22 +97,65 @@ static void logMessage(NSTextView* log, NSColor* color, NSString* message)
     [logOutput insertText:@"" replacementRange:logOutput.selectedRange];
     NSPasteboard *pboard = [sender draggingPasteboard];
 	
-    if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
-        NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-        NSUInteger numberOfFiles = [files count];
-        
+    
+    // Prompt the user to choose a directory for saving files
+    NSURL *selectedDirectoryURL = [self selectDirectory];
+    if (!selectedDirectoryURL) {
+        // No directory was selected
+        return NO;
+    }
+    
+    if ( [[pboard types] containsObject:NSPasteboardTypeFileURL] ) {
+        // This used to just return an array, now it can return an array
+        // or an NSString. It's always cool when functions can return different types
+        id pasteboardContent = [pboard propertyListForType:NSPasteboardTypeFileURL];
+        NSArray *urls = nil;
+        if ([pasteboardContent isKindOfClass:[NSArray class]]) {
+            urls = pasteboardContent;
+        } else if ([pasteboardContent isKindOfClass:[NSString class]]) {
+            urls = @[pasteboardContent];
+        }
+        NSUInteger numberOfFiles = [urls count];
+
         NSUInteger i;
         for (i=0; i<numberOfFiles; i++)
         {
-            NSString* fileName = [files objectAtIndex:i];
+            NSString *filePath = [urls objectAtIndex:i];
+            NSURL *fileURL = [NSURL URLWithString:filePath];
+            // Sandboxing can make the URLs look nuts. Try to un-messup the URLS
+            if ([filePath hasPrefix:@"file:///.file"]) {
+                // Resolve the special URL to a real path
+                fileURL = [fileURL URLByResolvingSymlinksInPath];
+            }
+            NSString *fileName = [fileURL path];
+            
+            // Instead of using the original directory, use the user-selected directory
+            NSString * outputPath = [selectedDirectoryURL.path stringByAppendingPathComponent:[fileName lastPathComponent]];
+            outputPath = [outputPath stringByDeletingPathExtension]; // Remove file extension
+            
             Extractor * extr = [[Extractor alloc] init];
+            [extr setOutputPath:outputPath];
             [extr extractAuto:fileName dropViewRef:self];
         }
     }
     return YES;
 }
 
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender 
+- (NSURL *)selectDirectory {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setCanChooseFiles:NO];
+    [openPanel setCanChooseDirectories:YES];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setTitle:@"Select an Extraction Directory"];
+    [NSApp activateIgnoringOtherApps:YES];
+    // Show the panel and check if the user selected a directory
+    if ([openPanel runModal] == NSModalResponseOK) {
+        return [openPanel URL];
+    }
+    return nil;
+}
+
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
     NSPasteboard *pboard;
     pboard = [sender draggingPasteboard];
