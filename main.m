@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Extractor.h"
+#include <unistd.h>
 
 /** Check for input filename in CLI args, if any.
  *  Input arg qualifies as either:
@@ -44,17 +45,41 @@ char * findOutputArg(int argc, char *argv[]) {
 
 int main(int argc, char *argv[])
 {
-    char * iN = findInputArg(argc, argv);
-    char * oN = findOutputArg(argc, argv);
+    int opt;
+    NSString *fileName = nil;
+    NSString *dirName = nil;
     
-    if (iN != nil) {
-        NSString *fileName = [NSString stringWithCString:iN encoding:NSASCIIStringEncoding];
+    while ((opt = getopt(argc, (char * const *)argv, "hi:o:")) != -1) {
+        switch (opt) {
+            case 'h':
+                printf("Usage: %s [-h] [-i WebArchiveFile] [-o OuputDirectory]\n", argv[0]);
+                printf("  -h                 Show this help message\n");
+                printf("  -i WebArchiveFile  The WebArchive (.webarchive) file\n");
+                printf("  -o OuputDirectory  The directory to output extracted data\n");
+                exit(0);
+
+            case 'i':
+                fileName = [NSString stringWithUTF8String:optarg];
+                break;
+
+            case 'o':
+                dirName = [NSString stringWithUTF8String:optarg];
+                break;
+
+            case '?':
+                // XCode and friends pass other flags we need to
+                // just ignore.
+                break;
+        }
+    }
+    
+    if (fileName != nil)
+    {
         Extractor * extr = [[Extractor alloc] init];
-        if (oN != nil) {
-            NSString *dirName = [NSString stringWithCString:oN encoding:NSASCIIStringEncoding];
+        if(dirName != nil)
+        {
             [extr setOutputPath:dirName];
         }
-        
         [extr extractAuto:fileName dropViewRef:nil];
         exit(0);
     }

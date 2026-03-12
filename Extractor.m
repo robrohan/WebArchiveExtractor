@@ -24,9 +24,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
 {
 	self = [super init];
     if(self != nil) {
-        ///////////////////////////////////
-        // initialize properties with userDefaults settings
-        
         //get the user defined index name
         entryFileName = [[userDefaults values] valueForKey:@"WAEIndexName"];
         if (entryFileName == nil || [entryFileName length] == 0) {
@@ -34,12 +31,16 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
         }
         
         //default to XHTML if there is nothing else
-        contentKind = NSXMLDocumentXHTMLKind;
+        contentKind = NSXMLDocumentHTMLKind;
         
         //get the user selected output type
         //HACK alert. I need to figure out a better way to do this. I thought the User
         //types from the select box would get an object, but it only returns a string :-/
         NSString * outputType = [[userDefaults values] valueForKey:@"WAEOutputType"];
+        if (outputType == nil)
+        {
+            outputType = @"HTML";
+        }
         NSXMLDocumentContentKind type = NSXMLDocumentXHTMLKind;
         if ( [outputType isEqualToString:@"HTML"] ) {
             type = NSXMLDocumentHTMLKind;
@@ -59,8 +60,8 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
         
         // set default output path
         outputPath = @"";
-        ///////////////////////////////////
-
+        
+        printf("URL: '%s' Type: '%s' Output: '%s'\n", URLPrepend.UTF8String, outputType.UTF8String, outputPath.UTF8String);
     }
 	return self;
 }
@@ -73,7 +74,6 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
     NSString * dirPath = [fileName stringByDeletingLastPathComponent];
     
     if (dropViewRef == nil) {
-        dirPath = @"./";
         dropViewRef = [[ArchiveDropView alloc] init];
     }
     [dropViewRef logInfo:[NSString stringWithFormat:
@@ -99,11 +99,22 @@ static NSString* composeEntryPointPath(NSString* packagePath, NSString* indexNam
         [dropViewRef logError:NSLocalizedStringFromTable(@"cannot write", @"InfoPlist", @"")];
         return;
     }
-        
+    
+    printf("Output: '%s'\n", outputPath.UTF8String);
+    
     // set output path to archiveName if empty
-    if ([outputPath isEqual: @""]) {
+    if ([outputPath isEqual: @""])
+    {
         outputPath = [dirPath stringByAppendingPathComponent: archiveName];
     }
+    else
+    {
+        // use the folder passed on the cli
+        // if it exists
+        dirPath = outputPath;
+    }
+    
+    printf("Output: '%s'\n", outputPath.UTF8String);
     
     NSUInteger i = 0;
     while([fm fileExistsAtPath:outputPath])

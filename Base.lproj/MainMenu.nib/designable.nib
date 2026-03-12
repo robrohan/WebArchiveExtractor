@@ -362,11 +362,6 @@
                 <outlet property="logWindow" destination="224" id="286"/>
             </connections>
         </customObject>
-        <customObject id="289" userLabel="SUUpdater" customClass="SUUpdater">
-            <connections>
-                <outlet property="userDefaults" destination="326" id="CK2-if-Zk4"/>
-            </connections>
-        </customObject>
         <window title="WebArchive Extractor Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="292" userLabel="Preferences" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
