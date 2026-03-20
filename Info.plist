@@ -10,6 +10,8 @@
 	<string>WebArchiveExtractorHelp.help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>WebArchive Extractor Help</string>
+	<key>CFBundleIconFile</key>
+	<string>WebArchiveExtractor.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -19,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>NSAppleScriptEnabled</key>
@@ -34,7 +36,5 @@
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>
 	<string>WebArchiveExtractor.sdef</string>
-	<key>CFBundleIconFile</key>
-	<string>WebArchiveExtractor.icns</string>
 </dict>
 </plist>

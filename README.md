@@ -1,78 +1,90 @@
-# WebArchive Extractor
+# WebArchiveExtractor
 
-WebArchive Extractor is a MacOS application to help un-archive `.webarchive`
-files (like when saving from Safari).
+Mac OS X utility to un-archive .webarchive files (like when saving from Safari)
 
-If you do not want to build the code yourself, you can grab a compiled
-[universal binary here](https://therohans.com/webarchiveextractor/).
+This project was forked from [Vitaly Davidenko's repo on sourceforge](https://sourceforge.net/projects/webarchivext/).
 
-## Compiling
+## Usage
 
-You should be able to just checkout the code, open in Xcode, and click run.
+You can use the utility graphically by launching WebArchiveExtractor.app directly. [See interface here.](https://robrohan.github.io/WebArchiveExtractor/)
 
-## Building Help
+You can also run the same executable from from the command line:
 
-```
-cd WebArchiveExtractorHelp
+```sh
+./WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor
 ```
 
-```
-hiutil -I corespotlight -Caf WebArchiveExtractorHelp.cshelpindex -vv .
+Running with no arguments will just launch the GUI.
+
+## Claude Code Skill
+
+This repo includes a Claude Code skill that lets you extract `.webarchive` files by just asking Claude naturally (e.g. "extract this webarchive file").
+
+![Claude Example](./docs/claude.png)
+
+### Installing the Skill
+
+Copy the skill into your Claude Code skills directory:
+
+```sh
+mkdir -p ~/.claude/skills/webarchive
+cp skills/webarchive/SKILL.md ~/.claude/skills/webarchive/SKILL.md
 ```
 
-```
-hiutil -I lsm  -Caf WebArchiveExtractorHelp.helpindex -vv .
+Once installed, Claude Code will recognize requests to extract `.webarchive` files and use WebArchiveExtractor automatically. The skill requires the app to be installed at `/Applications/WebArchiveExtractor.app` (see [Build](#build) below).
+
+## CLI Usage
+
+---
+
+Extract contents of `website.webarchive` to a directory named `website` relative to CWD:
+
+```sh
+WebArchiveExtractor website.webarchive
 ```
 
-Verify:
-
-```
-hiutil -I corespotlight -Tvf WebArchiveExtractorHelp.cshelpindex
-```
-
-```
-mv WebArchiveExtractorHelp WebArchiveExtractorHelp.help
+```sh
+WebArchiveExtractor -i website.webarchive
 ```
 
 ---
 
-NOTE: this file is from the original sourceforge code. There is no Automator 
-code in this forked version
+Define explicit output directory:
 
-Release notes
+```sh
+WebArchiveExtractor website.webarchive -o out
+```
 
-Version 0.1 - initial release 
-This release contains two independent parts
-
-Part 1. Application 'Web Archive Extractor'
-
-files:
-WebArchiveExtractor.zip contains Application
-
-To install 'Web Archive Extractor'
- - unpack WebArchiveExtractor.zip
-  - copy WebArchiveExtractor into /Application folder 
+---
 
 
-Part 2. Automator Action
+## Build
 
-files:
-Automator-WebArchiveExtractorAction.action.zip  contains Automator Plugin
-Automator-ExtractWebarchive.zip contains sample workflow
+You *should* be able to automatically build and sign a release for local execution by running this command in the root of the project, even if you are not an Apple developer (assuming you've got the Xcode CLI tools):
 
-To install Automator Action 
- - unpack zip 
- - copy WebArchiveExtractorAction.action into  /Users/<your username>/Library/Automator folder
+Update: You need to do two things first:
+- Step 1. Download Xcode from the App Store (**Note: You don't have to run it, if you do it'll use up a bunch of disk space**)
+- Step 2. Run `xcodebuild -runFirstLaunch` in the Terminal
 
+```sh
+xcodebuild -project WebArchiveExtractor.xcodeproj
+```
 
-Version 0.2
-Version 0.2 improves stability and addresses a number of other minor issues.
--crash on releasing of autorelease pool fixed (in NSCoreDragReceiveProc)
--main resource name changed to webarchive-index.html
--bundle identifiers changed
+If the command fails, you'll need to open the project in Xcode to investigate.
 
-files:
-WebArchiveExtractor.0.2.zip  contains Application
-Automator-WebArchiveExtractorAction.0.2.action.zip  contains Automator Plugin
+The resulting `WebArchiveExtractor.app` should be in `build/Release`. To install, you can just drag it to your Applications directory. 
 
-.
+> Keep in mind that the executable is inside the `.app` bundle. To reference the command in your shell, you can do something like either of the following:
+
+Add to PATH:
+
+```sh
+# Add this to your shell's rc file:
+export PATH="$PATH:/Applications/WebArchiveExtractor.app/Contents/MacOS/"
+```
+
+Symlink to a location already in PATH:
+
+```sh
+ln -s /Applications/WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor ~/.local/bin/WebArchiveExtractor
+```
