@@ -2,6 +2,8 @@
 
 Mac OS X utility to un-archive .webarchive files (like when saving from Safari)
 
+> **Don't want to compile it yourself?** You can purchase the app directly at [therohans.com/webarchiveextractor/](https://therohans.com/webarchiveextractor/).
+
 This project was forked from [Vitaly Davidenko's repo on sourceforge](https://sourceforge.net/projects/webarchivext/).
 
 ## Usage
