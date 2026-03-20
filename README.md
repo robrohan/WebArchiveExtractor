@@ -33,6 +33,8 @@ cp skills/webarchive/SKILL.md ~/.claude/skills/webarchive/SKILL.md
 
 Once installed, Claude Code will recognize requests to extract `.webarchive` files and use WebArchiveExtractor automatically. The skill requires the app to be installed at `/Applications/WebArchiveExtractor.app` (see [Build](#build) below).
 
+> **Note:** Due to macOS app sandboxing, the only reliable output location when using the CLI via Claude Code is the user's `~/Downloads` folder. If extraction to another directory fails or produces no output, use `~/Downloads` as the destination.
+
 ## CLI Usage
 
 ---

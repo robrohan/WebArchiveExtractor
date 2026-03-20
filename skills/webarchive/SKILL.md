@@ -50,16 +50,20 @@ ln -s /Applications/WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor ~
 
 1. Check the binary exists using the test command above. If not found, stop and direct the user to install the app.
 2. Determine the input `.webarchive` file from `$ARGUMENTS` or ask the user.
-3. Determine (optional) output directory and URL prepend from `$ARGUMENTS` or ask if needed.
-4. Run the extractor using the Bash tool:
+3. Determine the output directory:
+   - If the user explicitly provided one in `$ARGUMENTS`, use that.
+   - Otherwise, default to `~/Downloads/<archive-name>` (where `<archive-name>` is the input filename without the `.webarchive` extension).
+   - If the user asks why `~/Downloads` is the default, explain: macOS sandboxes the WebArchiveExtractor app, which restricts which directories the CLI can write to. The `~/Downloads` folder is one of the few locations reliably accessible, so it's used as the default to avoid silent failures.
+4. Determine (optional) URL prepend from `$ARGUMENTS` or ask if needed.
+5. Run the extractor using the Bash tool:
    ```sh
-   /Applications/WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor -i "<input>" [-o "<output>"] [-p "<prepend>"]
+   /Applications/WebArchiveExtractor.app/Contents/MacOS/WebArchiveExtractor -i "<input>" -o "<output>" [-p "<prepend>"]
    ```
-5. If successful, list the output directory contents with `ls` and summarise:
+6. If successful, list the output directory contents with `ls` and summarise:
    - The output directory path
    - How many files were extracted
    - The main HTML file name (if identifiable)
-6. Offer to open the extracted HTML in the browser with `open <file>`.
+7. Offer to open the extracted HTML in the browser with `open <file>`.
 
 ## Notes
 
